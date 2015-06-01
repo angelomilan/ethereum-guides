@@ -1,2 +1,2 @@
 # ethereum-guides
-Ethereum guide for dummies
+Ethereum guides for dummies
