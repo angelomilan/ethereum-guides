@@ -104,6 +104,22 @@ If these steps don’t work the first time, quit Terminal and do it again, you w
 On your Android device
 copy your .pem File into your sd card. If there is no sd card in your android, transfer it via usb
 Download and launch Juice SSH app
+
+LE MIE STUPIDE DOMANDE
+
+E’ vero, ci sono molte guide valide… il “difficile” è mettere tutto insieme quando hai una necessità specifica.
+
+Fino al lancio dell’ istanza ho chiarezza completa. 
+Poi ho problemi nel definire la giusta sequenza di azioni / installazioni da fare.
+
+Di quali “componenti” ho bisogno? Miner?
+Client go o CPP?
+Devo creare un wallet?
+Coinbase (?!!)
+
+Ho notato che in questa fase esistono client in linguaggi diversi, diverse denominazioni per una certa cosa, diversi comandi per ottenere una stessa cosa… (geth..)
+
+L’ idea è di incanalare l’ utente in un percorso obbligato, senza dargli opzioni che possono confondere i newbie… come me
  
 *************FROM HERE, WORK IN PROGRESS **************
 	•	 
