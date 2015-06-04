@@ -1,22 +1,26 @@
-Ethereum cloud mining for dummies
- 
+# Ethereum cloud mining for dummies
+
 This step by step tutorial is easy to follow. It’s as easy as copy / pasting
 If you don’t understand what you are doing, it doesn’t matter.
-Problem:
-I want to mine Ether, but I don’t want to use my machine and I don’t want to invest on new hardware and leave it always on.
-Solution: cloud mining aka using Amazon’s cloud servers.
+
+## Problem:
+I want to mine Ether, but I do not want to use my machine and I do not want to invest on new hardware and pay thousand dollar electricity bills.
+
+## Solution: **cloud mining** aka using Amazon’s cloud servers.
 Since GPU mining is set to be 100x more efficient than CPU with Ethereum, we need to look for GPU power on the cloud.
-The answer, apparently, is Amazon Web services EC2
+The answer, apparently, is **Amazon Web services EC2**
+
 On ethereum forum
 https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores
 paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance 
 comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
- 
-We are going to create an ubuntu linux virtual machine on amazon web services (AWS) EC2 
-THEN
-we are going to install ethereum miner on ubuntu
+
+* We are going to create an ubuntu linux virtual machine on amazon web services (AWS) EC2
+**THEN**
+* we are going to install ethereum miner on ubuntu. 
+
 Step 1.
-a) First thing first… Get an AWS account here: 
+a) First thing first… Get an AWS account [here](aws.amazon.com):
 Amazon Web Services (AWS) - Cloud Computing Services
 Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services. Free to join, pay only for…aws.amazon.com
  
@@ -25,15 +29,14 @@ If you trust Amazon, you can trust their web services.
 Click on top right the button
  
 
-
 As you can see, the registration process is very handy, since you can sign-in with your existing Amazon account.
 You may notice that AWS offers the EC2 service free for 750 hrs/month, for 12 months
 But that’s for the Linux t2.micro instance. Which is good for testing, but not for mining Ethereum. I will tell you later what instance to select to maximize the GPU power.
-Once you’ve registered to AWS, you will be presented with a big list of the services offered by Amazon:
 
+Once you have registered on AWS, you will be presented with a big list of the services offered by Amazon:
 
 Click on EC2, which will give us GPU power-horses for mining.
- 
+
 It’s time to create the Linux virtual machine
 click on instances from the menu “Instances”. then click:
 
@@ -130,7 +133,7 @@ Creating an ethereum account (aka a eth.coinbase? aka a wallet with an address)
  
  
  
-INSTALLING GETh
+# INSTALLING GETh
  
 	•	build geth from source: https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source
 	•	run geth and leave it to catch up on the chain: ~/go-ethereum/build/bin/geth
@@ -140,23 +143,24 @@ Building Geth (command line client)
  
 First, install git
  
-sudo apt-get install git
+```sudo apt-get install git```
  
 Clone the repository to a directory of your choosing:
-git clone https://github.com/ethereum/go-ethereum
+
+```git clone https://github.com/ethereum/go-ethereum```
 
  
 Building geth requires some external libraries to be installed:
-sudo apt-get install -y build-essential libgmp3-dev golang
+```sudo apt-get install -y build-essential libgmp3-dev golang```
 
  
 Finally, build the geth program using the following command.
-cd go-ethereum
-make geth
+```cd go-ethereum
+make geth```
 
  
 You can now type:
-build/bin/geth to start your node.
+```build/bin/geth``` to start your node.
  
 0x676f
  
@@ -358,10 +362,12 @@ LET THE FORUM KNOW AFTER THE TUTORIAL IS COMPLETE:
 https://forum.ethereum.org/discussion/2129/need-a-how-to-for-digitalocean-vps
 https://forum.ethereum.org/discussion/296/cloud-mining
  
-Thanks to paul_bxd of the ethereum forum who initiated me to cloud mining with Ethereum and AWS EC2. Without his help and resources a wouldn’t be able to put this guide togerthere.
+**_Thanks to paul_bxd of the ethereum forum who initiated me to cloud mining with Ethereum and AWS EC2. Without his help and resources a wouldn’t be able to put this guide together._**
+
 A special announcement by paul_bxd
 now we are offering free space to host a server you buy. We can provide free power, internet and cooling. We ask for a % of the Ether you successfully mine. Is this of interest to you?
 reach me on twitter @angelomilan
 If you liked this post and want to see the next one “ “ tip me some ether love
+
 References:
 http://ethereum.gitbooks.io/frontier-guide/content/gpu.html
