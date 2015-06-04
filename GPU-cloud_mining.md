@@ -103,17 +103,17 @@ Ethereum client comes in 3 implementations. One written in [Go language](https:/
 
 At the moment, the only implementation supporting GPU mining is the [C++ implementation](https://github.com/ethereum/cpp-ethereum). However, the live testnet is running on the Go implementation (oh dear...). So you will need the Go implementation to read, synchronize the chain and credit Ether on your account, but the C++ miner to have GPU support. 
 
-#Step 1 - Build Go-Ethereum client from source 
+###Step 1 - Build Go-Ethereum client from source 
 
 * Follow the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) to build the client
 * Run the client and let it catch up with the test-chain: ```geth``` or ```~/go-ethereum/build/bin/geth```
 
-#Step 2 - Install the C++ miner
+###Step 2 - Install the C++ miner
 
 * Install ethminer from [cpp-ethereum dev PPAs]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit)
 * Once installed, benchmark ethminer to check that your system is in order: ```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
 
-#Step 3 - Create a new account and run the syncro between the Go and C++ clients
+###Step 3 - Create a new account and run the syncro between the Go and C++ clients
 
 * Once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new``` or simply ```geth account new``` (you can view if that was successful with ```geth account list```). 
 * Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc``` or simply ```geth --rpc```
