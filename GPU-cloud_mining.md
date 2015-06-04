@@ -1,93 +1,84 @@
 # Ethereum cloud mining for dummies
 
-This step by step tutorial is easy to follow. It’s as easy as copy / pasting
-If you don’t understand what you are doing, it doesn’t matter.
+This step by step tutorial is easy to follow. It is as easy as copy / pasting.
+Try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim 
 
 ## Problem:
 I want to mine Ether, but I do not want to use my machine and I do not want to invest on new hardware and pay thousand dollar electricity bills.
 
 ## Solution: **cloud mining** aka using Amazon’s cloud servers.
+
 Since GPU mining is set to be 100x more efficient than CPU with Ethereum, we need to look for GPU power on the cloud.
 The answer, apparently, is **Amazon Web services EC2**
 
-On ethereum forum
-https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores
-paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance 
+On ethereum forum at [this link](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores) @paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance 
 comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
 
 * We are going to create an ubuntu linux virtual machine on amazon web services (AWS) EC2
 **THEN**
 * we are going to install ethereum miner on ubuntu. 
 
-Step 1.
-a) First thing first… Get an AWS account [here](aws.amazon.com):
-Amazon Web Services (AWS) - Cloud Computing Services
-Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services. Free to join, pay only for…aws.amazon.com
- 
-AWS stands for Amazon Web Services. Amazon, the well known ecommerce giant is also big in Hosting for developers and more.
-If you trust Amazon, you can trust their web services.
-Click on top right the button
- 
+##Step 1 - Get an AWS account
+
+First things first: get an AWS account [here](http://aws.amazon.com):
+
+Amazon Web Services (AWS) is a cloud computing service provided by Amazon, the well known e-commerce giant. 
 
 As you can see, the registration process is very handy, since you can sign-in with your existing Amazon account.
-You may notice that AWS offers the EC2 service free for 750 hrs/month, for 12 months
-But that’s for the Linux t2.micro instance. Which is good for testing, but not for mining Ethereum. I will tell you later what instance to select to maximize the GPU power.
+You may notice that AWS offers the EC2 service free for 750 hrs/month, for 12 months. However, that is for the Linux _t2.micro instance_. That is good for testing, but not for mining Ethereum. I will tell you later what instance to select to maximize the GPU power.
 
-Once you have registered on AWS, you will be presented with a big list of the services offered by Amazon:
+Once you have registered on [AWS](http://aws.amazon.com), you will be presented with a big list of the services offered by Amazon. Click on **EC2** (stands for, Elastic Compute Cloud), that will give you GPU horsepower for mining the Ethereum blockchain.
 
-Click on EC2, which will give us GPU power-horses for mining.
+##Step 2 - Setup the pre-built Amazon Machine Image (AMI) on Amazon AWS EC2
 
-It’s time to create the Linux virtual machine
-click on instances from the menu “Instances”. then click:
+An **Amazon Machine Image (AMI)** "provides the information required to launch an instance, which is a virtual server in the cloud."
 
+For our purposes, we need to use the following AMI: 
 
-allright, now you have to choose the right “OS image” amazon call them AMI or Amazon Machine image.
-First off, make sure you are in the correct region (US East) otherwise you will not see it in the list
- 
- 
+* Image: **ami-2cbf3e44** for US-East or **ami-c38babf3** for US-West (Ubuntu Server 14.04 LTS (HVM) – CUDA 6.5)
+* Instance type: **g2.2xlarge** (if you skip this step, you won’t have an nvidia device)
+* Storage: Use at least 8 GB, 20+ GB recommended
 
+How can we find it? To find a Linux AMI using the Images page
 
-once you selected N. Virginia, it’s time to go to “community AMIs” and to search for this image:
-“ami-2cbf3e44”
-This one, like all the ubuntu 14.04 images, is supported by Ethereum Frontier, but in addition The pre-built AMI has all the NVIDIA GPU drivers, OpenCL, etc all pre-installed. 
-You will be redirected to “Step 2: Choose an Instance Type”
-As we said in the intro, we need a GPU instance to mine Ethereum.
-If you scroll down the list you will see 2 GPU instances.
-we will go for g2.8xlarge instance
-just click on the empty box on the left to choose the instance
-At this point, if you want you can play with the t2.micro free instance before proceeding spending money.
-We are ready, just click “Review and launch” at the bottom
+* Open the Amazon EC2 console.
+* From the navigation bar, select **US East (N.Virginia)**;  
+* In the navigation pane, click **Images -> AMIs**; 
+* Switch to **Public Images** next to the search filter (the default is "Owned by Me" which will be at first empty, since you do not yet own any AMI)
+* Click on the search filter and then (search by) _AMI ID_ -> **ami-2cbf3e44**
 
+_Note: make always sure you are in the correct region (US East, N.Virginia as we said) otherwise you will not see the AMI we are insterested in on the list._
 
- 
+The ami-2cbf3e44, like all the ubuntu 14.04 images, is supported by Ethereum Frontier, but in addition this pre-built AMI has all the NVIDIA GPU drivers, OpenCL, etc... all pre-installed. 
 
+##Step 3 - Customize and review your instance
 
+Now we need to customize the instance to make sure we are doing things right. 
 
+* You will be redirected to “Step 2: Choose an Instance Type”
 
-THEN,
-Launch
-You will now be prompted to create your access key aka “Key pair”
-To use a virtual machine we first need an access key (keep it private!),
-Amazon AWS access keys consist of a pubic key and a private key.
-click on “Create new key pair”:
- 
- 
-type a name for the access key
-a .pem file will be automatically downloaded to your local machine, this is your private key.
-Backup this file since you will need this for remote access to your virtual machine on the AWS cloud
- 
+As we said in the intro, we need a GPU instance to mine Ethereum. If you scroll down the list you will see 2 GPU instances.
 
+* We will go for the **g2.2xlarge** (if you skip this step, you won’t have an nvidia device)
+* Just click on the empty box on the left to choose the instance
 
-Then click “Launch Instances”
-All right, now on “View instances”
-your instance should be pre-selected
-Click connect
-Connecting to your Linux instance on AWS
- 
- 
+_Note: At this point, if you want you can play with the **t2.micro free** instance before proceeding spending money._
 
+* We are ready, just click “Review and launch” at the bottom
 
- 
+## Step 4 - Launch
+
+You will now be prompted to create your access key aka “Key pair”. To use a virtual machine we first need an access key (keep it private!). Amazon AWS access keys consist of a pubic key and a private key.
+
+* Click on “Create new key pair”:
+* Type a name for the access key
+* A **_.pem_** file will be automatically downloaded to your local machine, this is your private key.
+* Backup this file since you will need this for remote access to your virtual machine on the AWS cloud
+* Then click “Launch Instances”
+* All right, now on “View instances”
+
+Your instance should be pre-selected. Click connect. Connecting to your Linux instance on AWS
+
 On your Mac
 Put your .pem File in the folder Applications > Utilities. 
 Launch Terminal
