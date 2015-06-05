@@ -110,20 +110,25 @@ At the moment, the only implementation supporting GPU mining is the [C++ impleme
 * Follow the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) to build the client
 * Run the client and let it catch up with the test-chain: ```geth``` or ```~/go-ethereum/build/bin/geth```
 
-###Step 2 - Install the C++ miner
+###Step 2 - Install the C++ miner (ethminer)
 
 * Install ethminer from [cpp-ethereum dev PPAs]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit)
+
+_Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_
+
 * Once installed, benchmark ethminer to check that your system is in order: ```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
 
 ###Step 3 - Create a new account and run the syncro between the Go and C++ clients
 
 * Once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new``` or simply ```geth account new``` (you can view if that was successful with ```geth account list```). 
-* Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc``` or simply ```geth --rpc```
-* start ethminer: ```ethminer -G```
+* Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
+* start ethminer: ```ethminer -M -G --opencl-device 0```
 
 _Note: if you're using the larger g2 instance with 4 GPUs you many need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_
 
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
+
+_Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
 ## Q&A
 
