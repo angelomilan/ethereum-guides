@@ -1,5 +1,7 @@
 # Ethereum cloud mining for dummies
 
+_by A.Milan and M.Terzi with the precious support of @paul_bxd and @jesus666
+
 This step by step tutorial is easy to follow. It is as easy as copy / pasting.
 Try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim 
 
