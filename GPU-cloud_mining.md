@@ -110,21 +110,21 @@ Anyway...
 ###Step 1 - Build Go-Ethereum client from source 
 
 * According to the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) we need to copy these lines to build the client:
-|```sudo apt-get install software-properties-common```
-|```sudo add-apt-repository -y ppa:ethereum/ethereum-qt```
-|```sudo add-apt-repository -y ppa:ethereum/ethereum```
-|```sudo add-apt-repository -y ppa:ethereum/ethereum-dev```
-|```sudo apt-get update```
-|```sudo apt-get install ethereum```
+```sudo apt-get install software-properties-common```
+```sudo add-apt-repository -y ppa:ethereum/ethereum-qt```
+```sudo add-apt-repository -y ppa:ethereum/ethereum```
+```sudo add-apt-repository -y ppa:ethereum/ethereum-dev```
+```sudo apt-get update```
+```sudo apt-get install ethereum```
 Copy/ paste and hit ENTER on your keyboard, one line at a time
 Next time, to run the client and let it catch up with the "test-chain". 
 Type:
- |```geth``` 
+```geth``` 
  or
   ```~/go-ethereum/build/bin/geth```  and hit ENTER.
 
-But, wait don't do it! We still need to go through Step 2
-or you will see the message "Block syncronization started" and terminal won't respond to your commands.
+[But, wait don't do it! We still need to go through Step 2
+or you will see the message "Block syncronization started" and terminal won't respond to your commands.]
 
 ###Step 2 - Install the C++ miner (ethminer)
 
@@ -153,9 +153,9 @@ You can now type
 
 like... every second.
 
-No... maybe those lines are not "the client catching up on the blockchain" 
+[No... maybe those lines are not "the client catching up on the blockchain" 
 ....like before if I type geth those lines coming in won't allow me to go any further... 
-I type the command "geth account new" but the system ignores it
+I type the command "geth account new" but the system ignores it]
 
 ###Step 3 - Create a new account and run the syncro between the Go and C++ clients
 
@@ -191,7 +191,7 @@ You don't even need to login, as you may expect. You must remember that your new
 
 [ERROR, I get "> ethminer -M -G --opencl-device 0
 (anonymous): Line 1:18 Unexpected identifier (and 1 more errors)
-" and the "automatic thing" starts again
+" and the "automatic thing" starts again]
 
 ## Q&A
 **What if I quit Terminal and turn off my local computer?**
