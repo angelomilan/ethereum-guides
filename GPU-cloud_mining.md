@@ -110,16 +110,16 @@ Anyway...
 ###Step 1 - Build Go-Ethereum client from source 
 
 * According to the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) we need to copy these lines to build the client:
-```sudo apt-get install software-properties-common```
-```sudo add-apt-repository -y ppa:ethereum/ethereum-qt```
-```sudo add-apt-repository -y ppa:ethereum/ethereum```
-```sudo add-apt-repository -y ppa:ethereum/ethereum-dev```
-```sudo apt-get update```
-```sudo apt-get install ethereum```
+|```sudo apt-get install software-properties-common```
+|```sudo add-apt-repository -y ppa:ethereum/ethereum-qt```
+|```sudo add-apt-repository -y ppa:ethereum/ethereum```
+|```sudo add-apt-repository -y ppa:ethereum/ethereum-dev```
+|```sudo apt-get update```
+|```sudo apt-get install ethereum```
 Copy/ paste and hit ENTER on your keyboard, one line at a time
 Next time, to run the client and let it catch up with the "test-chain". 
 Type:
- ```geth``` 
+ |```geth``` 
  or
   ```~/go-ethereum/build/bin/geth```  and hit ENTER.
 
