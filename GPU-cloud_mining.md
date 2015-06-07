@@ -1,5 +1,7 @@
 # Ethereum cloud mining for dummies
 
+LET THE ETHEREUM FORUM GUYS NOW WHEN COMPLETE
+
 _by A.Milan and M.Terzi with the precious support of @paul_bxd and @jesus666_
 
 This step by step tutorial is easy to follow. It is as easy as copy / pasting.
@@ -13,8 +15,8 @@ I want to mine Ether, but I do not want to use my machine and I do not want to i
 Since GPU mining is set to be 100x more efficient than CPU with Ethereum, we need to look for GPU power on the cloud.
 The answer, apparently, is **Amazon Web services EC2**. 
 
-On [Ethereum forum](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores) @paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance 
-comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
+On [Ethereum forum](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores) @paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance 
+comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
 
 The tutorial is divided in two parts. In the first, we are going to create an Ubuntu Linux virtual machine on Amazon Web Services (AWS) EC2 (Elastic Compute Cloud); in the second part, we are going to install Ethereum C++ miner on Ubuntu. 
 
@@ -51,7 +53,7 @@ How can we find it? To find a Linux AMI using the Images page
 
 _Note: make always sure you are in the correct region (US East, N.Virginia as we said) otherwise you will not see the AMI we are insterested in on the list._
 
-The ami-2cbf3e44, like all the ubuntu 14.04 images, is supported by Ethereum Frontier, but in addition this pre-built AMI has all the NVIDIA GPU drivers, OpenCL, etc... all pre-installed. 
+The ami-2cbf3e44, like all the ubuntu 14.04 images, is supported by Ethereum Frontier, but in addition this pre-built AMI has all the NVIDIA GPU drivers, OpenCL, etc... all pre-installed. 
 
 ###Step 3 - Customize and review your instance
 
@@ -85,78 +87,119 @@ Your instance should be pre-selected. Click connect. Connecting to your Linux in
 
 On your Mac: 
 
-* Put your **_.pem_** File in the folder _Applications > Utilities_ 
+* Put your **_.pem_** file in the folder _Applications > Utilities_ 
 * Launch Terminal
 * Type or copy/paste ```chmod 400 /Applications/Utilities/youraccesskeyname.pem```
 ```ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP```
 Note: you will need to use this line everytime you close Terminal and want to start again
-* Click yes
+* Type yes
 * You should get a confirmation message ```Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0–37-generic x86_64)```
  
-Note: if these steps don’t work the first time, quit Terminal and do it again, you will eventuallY succeed (this happened to me)
+Note: if these steps don’t work the first time, quit Terminal and do it again, you will eventually succeed (this happened to me)
 
-On your Android device:
-* Copy your **_.pem_** File into your sd card. If there is no sd card in your android, transfer it via usb
-* Download and launch Juice SSH app
+
 
 ##Part 2 - Installing Ethereum on your instance and start mining
 
 Ethereum client comes in 3 implementations. One written in [Go language](https://github.com/ethereum/go-ethereum), another written in [C++](https://github.com/ethereum/cpp-ethereum), and the third written in [Phyton](https://github.com/ethereum/pyethereum). 
 
 At the moment, the only implementation supporting GPU mining is the [C++ implementation](https://github.com/ethereum/cpp-ethereum). However, the live testnet is running on the Go implementation (oh dear...). So you will need the Go implementation to read, synchronize the chain and credit Ether on your account, but the C++ miner to have GPU support. 
+Anyway...
+
 
 ###Step 1 - Build Go-Ethereum client from source 
 
-* Follow the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) to build the client
-* Run the client and let it catch up with the test-chain: ```geth``` or ```~/go-ethereum/build/bin/geth```
+* According to the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) we need to copy these lines to build the client:
+```sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum-qt
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo add-apt-repository -y ppa:ethereum/ethereum-dev
+sudo apt-get update
+sudo apt-get install ethereum```
+Copy/ paste and hit ENTER on your keyboard, one line at a time
+Next time, to run the client and let it catch up with the "test-chain". 
+Type:
+ ```geth``` 
+ or
+  ```~/go-ethereum/build/bin/geth```  and hit ENTER.
+
+But, wait don't do it! We still need to go through Step 2
+or you will see the message "Block syncronization started" and terminal won't respond to your commands.
 
 ###Step 2 - Install the C++ miner (ethminer)
 
-* Install ethminer from [cpp-ethereum dev PPAs]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit)
+* Install ethminer. Again, following the [cpp-ethereum dev PPAs] guide ( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit) here is the important part. Ready to copy & paste? This time, you will need to hit ENTER 2 times after every line you paste. In fact, the program will ask you to confirm with one more ENTER
+Let's do this:
+ ```sudo add-apt-repository ppa:ethereum/ethereum-qt
+sudo add-apt-repository ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install cpp-ethereum ```
+
 
 _Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_
 
 * Once installed, benchmark ethminer to check that your system is in order: ```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
 
+_Note: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device"
+The system is telling you that the gpu, an nvidia graphic card, is missing_ So, start over the guide and get the g2.8xlarge instance before proceeding any further.
+
+You can now type
+ ```geth``` 
+ and wait until the client finishes catching up on the blockchain. 
+ You will know that it's happened when you see lines like this coming in automatically:
+ ``` I0607 21:55:54.122065    1392 chain_manager.go:662] imported 256 block(s) (0 queued 0 ignored) in 1.388846498s. #175604 [9e9b2828 / 58bacf39]``` 
+ 
+``` I0607 21:55:56.828199    1392 chain_manager.go:662] imported 256 block(s) (0 queued 0 ignored) in 2.705918036s. #175860 [36775f4a / cb47a14d]``` 
+
+like... every second.
+
+No... maybe those lines are not "the client catching up on the blockchain" 
+....like before if I type geth those lines coming in won't allow me to go any further... 
+I type the command "geth account new" but the system ignores it
+
 ###Step 3 - Create a new account and run the syncro between the Go and C++ clients
 
-* Once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new``` or simply ```geth account new``` (you can view if that was successful with ```geth account list```). 
+What's this account, and why you need it? [Is this the "wallet"?]
+[do I need this to put "inside" it the ether I mine?]
+
+
+* So, once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new``` 
+* or simply ```geth account new``` (you can view if that was successful with ```geth account list```). The system will ask for a 'Passphrase" aka a password. To generate a complex password use thise tool called Last Pass http://lastpass.com and save it to your notepad
+* You will be given an Address. Back it up in a notepad 
 * Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
 * start ethminer: ```ethminer -M -G --opencl-device 0```
 
-_Note: if you're using the larger g2 instance with 4 GPUs you many need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_
+_Note: if you're using the larger g2 instance with 4 GPUs [which is the 2.8?] you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ [what the f**ck? explain, step by step]
+
+```ethminer -M -G --opencl-device 1```
+```ethminer -M -G --opencl-device 2```
+```ethminer -M -G --opencl-device 3```
+[correct?]
 
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
 
 _Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
+
+Next time you want to connect to your instance and check things,
+you just need to type these lines:
+```ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP```
+(You don't need to re-install the client and the miner every time.)
+You don't even need to login, as you may expect. You must remember that your new cloud machine is always working and was already "logged in".
+* Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
+* start ethminer: ```ethminer -M -G --opencl-device 0```
+
+[ERROR, I get "> ethminer -M -G --opencl-device 0
+(anonymous): Line 1:18 Unexpected identifier (and 1 more errors)
+" and the "automatic thing" starts again
+
 ## Q&A
-
-How much will you pay to run AWS GPU instance?
-
-A note on spot instances
-
-“Spot instances” are instances that potentially are much cheaper to to run than the standard sticker price. A normal reservation of a g2.2xlarge instance is $0.65/hr. However, you can bid on a “spot” instance, where your instance will continue to run as long as spot price is under your bid price.
-Sometimes this makes a lot of sense. Spot instance pricing, however, has a tendency to wildly fluctuate all over the place, as demonstrated in the picture below:
-
-As you can see, the price was around $6/hr (!!!) for Jan 17–19, and then came down significantly after that. Furthermore the trend line does not really follow any sort of pattern whatsoever. There are many theoriesabout why spot instance pricing is so volatile.
-At the time of this writing, spot instances in the us-east-1d region are trending at 0.23/hr for a g2.2xlarge instance. This is much cheaper than the normal running rate of 0.65/hr.
- 
-Instances > Spot request
- 
-Go to the next step, “configure instance details”, and request spot instances, if they are below the normal running price ($0.65/hr at time of writing)
+**What if I quit Terminal and turn off my local computer?**
+Does the instance stop to work?
 
 
-In the screenshot above, you can see that the current price in us-east-1d is $0.26/hr, so I set my maximum price to 0.27. Granted, if the price moves upwards at all, my instance will be terminated, but I can always fire up another once the price comes down.
-Now you are ready to launch your instance. Click “Review and Launch”, then “Launch”.
-Let the mining begin
-Once the instance is up, ssh into the machine and configure your mining details.
-At your mining website, you should notice that your miners are registered and working:
 
 
-WORK IN PROGRESS
-Resources:
-LET THE FORUM KNOW AFTER THE TUTORIAL IS COMPLETE:
  
 **_Thanks to paul_bxd of the ethereum forum who initiated me to cloud mining with Ethereum and AWS EC2. Without his help and resources a wouldn’t be able to put this guide together._**
 
@@ -164,7 +207,13 @@ LET THE FORUM KNOW AFTER THE TUTORIAL IS COMPLETE:
 
 A special announcement by @paul_bxd
 ```Now we are offering free space to host a server you buy. We can provide free power, internet and cooling. We ask for a % of the Ether you successfully mine. Is this of interest to you?```
-Reach me on twitter @angelomilan. If you liked this post and want to see the next one “ “ tip me some ether love
+ If you liked this post and want to see the next one reach me on @angelomilan on twitter and tell me you want it.
+ 
+Upcoming tutorials:
+How to cloud mine from your android device
+What the f**k is ethereum?
+
+
 
 ### References:
 http://ethereum.gitbooks.io/frontier-guide/content/gpu.html
