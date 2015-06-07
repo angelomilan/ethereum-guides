@@ -6,7 +6,10 @@ On your android device:
 download putty
 How much will you pay to run AWS GPU instance?
 
-A note on spot instances
+On Windows
+Download putty
+
+A note on spot instances (this was entirely and temporanely (?) copied... I need to go deeper and rewrite it
 
 “Spot instances” are instances that potentially are much cheaper to to run than the standard sticker price. A normal reservation of a g2.2xlarge instance is $0.65/hr. However, you can bid on a “spot” instance, where your instance will continue to run as long as spot price is under your bid price.
 Sometimes this makes a lot of sense. Spot instance pricing, however, has a tendency to wildly fluctuate all over the place, as demonstrated in the picture below:
