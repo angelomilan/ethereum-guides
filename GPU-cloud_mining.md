@@ -110,12 +110,12 @@ Anyway...
 ###Step 1 - Build Go-Ethereum client from source 
 
 * According to the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) we need to copy these lines to build the client:
-```sudo apt-get install software-properties-common
-sudo add-apt-repository -y ppa:ethereum/ethereum-qt
-sudo add-apt-repository -y ppa:ethereum/ethereum
-sudo add-apt-repository -y ppa:ethereum/ethereum-dev
-sudo apt-get update
-sudo apt-get install ethereum```
+```sudo apt-get install software-properties-common```
+```sudo add-apt-repository -y ppa:ethereum/ethereum-qt```
+```sudo add-apt-repository -y ppa:ethereum/ethereum```
+```sudo add-apt-repository -y ppa:ethereum/ethereum-dev```
+```sudo apt-get update```
+```sudo apt-get install ethereum```
 Copy/ paste and hit ENTER on your keyboard, one line at a time
 Next time, to run the client and let it catch up with the "test-chain". 
 Type:
@@ -130,10 +130,10 @@ or you will see the message "Block syncronization started" and terminal won't re
 
 * Install ethminer. Again, following the [cpp-ethereum dev PPAs] guide ( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit) here is the important part. Ready to copy & paste? This time, you will need to hit ENTER 2 times after every line you paste. In fact, the program will ask you to confirm with one more ENTER
 Let's do this:
- ```sudo add-apt-repository ppa:ethereum/ethereum-qt
-sudo add-apt-repository ppa:ethereum/ethereum
-sudo apt-get update
-sudo apt-get install cpp-ethereum ```
+ ```sudo add-apt-repository ppa:ethereum/ethereum-qt```
+```sudo add-apt-repository ppa:ethereum/ethereum```
+```sudo apt-get update```
+```sudo apt-get install cpp-ethereum ```
 
 
 _Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_
