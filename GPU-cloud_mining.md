@@ -97,7 +97,13 @@ Note: you will need to use this line everytime you close Terminal and want to st
 * Type yes
 * You should get a confirmation message ```Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0–37-generic x86_64)```
  
-Note: if these steps don’t work the first time, quit Terminal and do it again, you will eventually succeed (this happened to me)
+On Windows:
+
+Follow this guide:
+
+* [Connecting to Your Linux Instance from Windows Using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
+
+_Note: if these steps don’t work the first time, quit Terminal and do it again, you will eventually succeed (this happened to me)_
 
 ##Part 2 - Installing Ethereum on your instance and start mining
 
