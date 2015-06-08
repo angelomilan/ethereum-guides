@@ -71,7 +71,7 @@ _Note: At this point, if you want you can play with the **t2.micro free** instan
 
 ###Step 4 - Launch
 
-You will now be prompted to create your access key aka “Key pair”. To use a virtual machine we first need an access key (keep it private!). Amazon AWS access keys consist of a pubic key and a private key.
+You will now be prompted to create your access key aka “Key pair”. To use a virtual machine we first need an access key (keep it private!). Amazon AWS access keys consist of a public key and a private key.
 
 * Click on “Create new key pair”:
 * Type a name for the access key
