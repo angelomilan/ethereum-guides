@@ -89,15 +89,16 @@ On your Mac:
 
 * Put your **_.pem_** file in the folder _Applications > Utilities_ 
 * Launch Terminal
-* Type or copy/paste ```chmod 400 /Applications/Utilities/youraccesskeyname.pem```
-```ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP```
+* Type or copy/paste 
+```
+chmod 400 /Applications/Utilities/youraccesskeyname.pem
+ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
+```
 Note: you will need to use this line everytime you close Terminal and want to start again
 * Type yes
 * You should get a confirmation message ```Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0–37-generic x86_64)```
  
 Note: if these steps don’t work the first time, quit Terminal and do it again, you will eventually succeed (this happened to me)
-
-
 
 ##Part 2 - Installing Ethereum on your instance and start mining
 
@@ -106,47 +107,47 @@ Ethereum client comes in 3 implementations. One written in [Go language](https:/
 At the moment, the only implementation supporting GPU mining is the [C++ implementation](https://github.com/ethereum/cpp-ethereum). However, the live testnet is running on the Go implementation (oh dear...). So you will need the Go implementation to read, synchronize the chain and credit Ether on your account, but the C++ miner to have GPU support. 
 Anyway...
 
-
 ###Step 1 - Build Go-Ethereum client from source 
 
 * According to the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) we need to copy these lines to build the client:
-```sudo apt-get install software-properties-common```
-```sudo add-apt-repository -y ppa:ethereum/ethereum-qt```
-```sudo add-apt-repository -y ppa:ethereum/ethereum```
-```sudo add-apt-repository -y ppa:ethereum/ethereum-dev```
-```sudo apt-get update```
-```sudo apt-get install ethereum```
+```
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum-qt
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo add-apt-repository -y ppa:ethereum/ethereum-dev
+sudo apt-get update
+sudo apt-get install ethereum
+```
 Copy/ paste and hit ENTER on your keyboard, one line at a time
 Next time, to run the client and let it catch up with the "test-chain". 
 Type:
-```geth``` 
- or
-  ```~/go-ethereum/build/bin/geth```  and hit ENTER.
+```geth``` or 
+```~/go-ethereum/build/bin/geth```  and hit ENTER.
 
 [But, wait don't do it! We still need to go through Step 2
 or you will see the message "Block syncronization started" and terminal won't respond to your commands.]
 
 ###Step 2 - Install the C++ miner (ethminer)
 
-* Install ethminer. Again, following the [cpp-ethereum dev PPAs] guide ( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit) here is the important part. Ready to copy & paste? This time, you will need to hit ENTER 2 times after every line you paste. In fact, the program will ask you to confirm with one more ENTER
+* Install ethminer. Again, following the [cpp-ethereum dev PPAs guide]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit) here is the important part. Ready to copy & paste? This time, you will need to hit ENTER 2 times after every line you paste. In fact, the program will ask you to confirm with one more ENTER
 Let's do this:
- ```sudo add-apt-repository ppa:ethereum/ethereum-qt```
-```sudo add-apt-repository ppa:ethereum/ethereum```
-```sudo apt-get update```
-```sudo apt-get install cpp-ethereum ```
-
+```
+sudo add-apt-repository ppa:ethereum/ethereum-qt
+sudo add-apt-repository ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install cpp-ethereum 
+```
 
 _Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_
 
-* Once installed, benchmark ethminer to check that your system is in order: ```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
+* Once installed, benchmark ethminer to check that your system is in order: 
+```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
 
-_Note: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device"
-The system is telling you that the gpu, an nvidia graphic card, is missing_ So, start over the guide and get the g2.8xlarge instance before proceeding any further.
+_Note: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
 
-You can now type
- ```geth``` 
- and wait until the client finishes catching up on the blockchain. 
- You will know that it's happened when you see lines like this coming in automatically:
+You can now type ```geth```  and wait until the client finishes catching up on the blockchain. 
+You will know that it's happened when you see lines like this coming in automatically:
+
  ``` I0607 21:55:54.122065    1392 chain_manager.go:662] imported 256 block(s) (0 queued 0 ignored) in 1.388846498s. #175604 [9e9b2828 / 58bacf39]``` 
  
 ``` I0607 21:55:56.828199    1392 chain_manager.go:662] imported 256 block(s) (0 queued 0 ignored) in 2.705918036s. #175860 [36775f4a / cb47a14d]``` 
