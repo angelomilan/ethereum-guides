@@ -24,7 +24,7 @@ The tutorial is divided in two parts. In the first, we are going to create an Ub
 
 ###Step 1 - Get an AWS account
 
-First things first: get an AWS account [here](http://aws.amazon.com):
+First things first: get an AWS account [here](http://aws.amazon.com).
 
 Amazon Web Services (AWS) is a cloud computing service provided by Amazon, the well known e-commerce giant. 
 
@@ -53,7 +53,7 @@ How can we find it? To find a Linux AMI using the Images page
 
 _Note: make always sure you are in the correct region (US East, N.Virginia as we said) otherwise you will not see the AMI we are insterested in on the list._
 
-The ami-2cbf3e44, like all the ubuntu 14.04 images, is supported by Ethereum Frontier, but in addition this pre-built AMI has all the NVIDIA GPU drivers, OpenCL, etc... all pre-installed. 
+The **ami-2cbf3e44**, like all the ubuntu 14.04 images, is supported by Ethereum Frontier, but in addition this pre-built AMI has all the NVIDIA GPU drivers, OpenCL, etc... all pre-installed. 
 
 ###Step 3 - Customize and review your instance
 
