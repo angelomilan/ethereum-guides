@@ -2,12 +2,12 @@
 
 LET THE ETHEREUM FORUM GUYS NOW WHEN COMPLETE
 
-_by A.Milan and M.Terzi with the precious support of @paul_bxd and @jesus666_
+_by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
 This step by step tutorial is easy to follow. It is as easy as copy / pasting.
-Try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim 
+Try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim.
 
-## Problem:
+## Problem
 I want to mine Ether, but I do not want to use my machine and I do not want to invest on new hardware and pay thousand dollar electricity bills.
 
 ## Solution: **cloud mining** aka using Amazon’s cloud servers.
@@ -15,8 +15,7 @@ I want to mine Ether, but I do not want to use my machine and I do not want to i
 Since GPU mining is set to be 100x more efficient than CPU with Ethereum, we need to look for GPU power on the cloud.
 The answer, apparently, is **Amazon Web services EC2**. 
 
-On [Ethereum forum](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores) @paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance 
-comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
+On [Ethereum forum](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores) @paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
 
 The tutorial is divided in two parts. In the first, we are going to create an Ubuntu Linux virtual machine on Amazon Web Services (AWS) EC2 (Elastic Compute Cloud); in the second part, we are going to install Ethereum C++ miner on Ubuntu. 
 
@@ -35,7 +34,7 @@ Once you have registered on [AWS](http://aws.amazon.com), you will be presented 
 
 ###Step 2 - Setup the pre-built Amazon Machine Image (AMI) on Amazon AWS EC2
 
-An **Amazon Machine Image (AMI)** "provides the information required to launch an instance, which is a virtual server in the cloud."
+An **Amazon Machine Image (AMI)** "provides the information required to launch an instance, which is a virtual server in the cloud".
 
 For our purposes, we need to use the following AMI: 
 
@@ -43,7 +42,7 @@ For our purposes, we need to use the following AMI:
 * Instance type: **g2.2xlarge** (if you skip this step, you won’t have an nvidia device)
 * Storage: Use at least 8 GB, 20+ GB recommended
 
-How can we find it? To find a Linux AMI using the Images page
+How can we find it? To find a Linux AMI using the Images page:
 
 * Open the Amazon EC2 console.
 * From the navigation bar, select **US East (N.Virginia)**;  
@@ -63,7 +62,7 @@ Now we need to customize the instance to make sure we are doing things right.
 
 As we said in the intro, we need a GPU instance to mine Ethereum. If you scroll down the list you will see 2 GPU instances.
 
-* We will go for the **g2.2xlarge** (if you skip this step, you won’t have an nvidia device)
+* We will go for the **g2.2xlarge** (if you skip this step, you will not have an nvidia device)
 * Just click on the empty box on the left to choose the instance
 
 _Note: At this point, if you want you can play with the **t2.micro free** instance before proceeding spending money._
@@ -81,7 +80,7 @@ You will now be prompted to create your access key aka “Key pair”. To use a 
 * Then click “Launch Instances”
 * All right, now on “View instances”
 
-Your instance should be pre-selected. Click connect. Connecting to your Linux instance on AWS
+Your instance should be pre-selected. Click connect. Connecting to your Linux instance on AWS. 
 
 ###Step 5 - Connect your machine
 
@@ -154,9 +153,7 @@ You will know that it's happened when you see lines like this coming in automati
 
 like... every second.
 
-[No... maybe those lines are not "the client catching up on the blockchain" 
-....like before if I type geth those lines coming in won't allow me to go any further... 
-I type the command "geth account new" but the system ignores it]
+[No... maybe those lines are not "the client catching up on the blockchain"  ....like before if I type geth those lines coming in won't allow me to go any further... I type the command "geth account new" but the system ignores it]
 
 ###Step 3 - Create a new account and run the syncro between the Go and C++ clients
 
@@ -164,17 +161,19 @@ What's this account, and why you need it? [Is this the "wallet"?]
 [do I need this to put "inside" it the ether I mine?]
 
 
-* So, once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new``` 
-* or simply ```geth account new``` (you can view if that was successful with ```geth account list```). The system will ask for a 'Passphrase" aka a password. To generate a complex password use thise tool called Last Pass http://lastpass.com and save it to your notepad
-* You will be given an Address. Back it up in a notepad 
+* So, once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new```  or simply ```geth account new``` (you can view if that was successful with ```geth account list```). 
+* The system will ask for a 'Passphrase" aka a password. To generate a complex password use thise tool called Last Pass http://lastpass.com and save it to your notepad.
+* You will be given an Address. Back it up in a notepad. 
 * Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
 * start ethminer: ```ethminer -M -G --opencl-device 0```
 
 _Note: if you're using the larger g2 instance with 4 GPUs [which is the 2.8?] you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ [what the f**ck? explain, step by step]
 
-```ethminer -M -G --opencl-device 1```
-```ethminer -M -G --opencl-device 2```
-```ethminer -M -G --opencl-device 3```
+```
+ethminer -M -G --opencl-device 1
+ethminer -M -G --opencl-device 2
+ethminer -M -G --opencl-device 3
+```
 [correct?]
 
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
@@ -182,8 +181,7 @@ _Note: if you're using the larger g2 instance with 4 GPUs [which is the 2.8?] yo
 _Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
 
-Next time you want to connect to your instance and check things,
-you just need to type these lines:
+Next time you want to connect to your instance and check things, you just need to type these lines:
 ```ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP```
 (You don't need to re-install the client and the miner every time.)
 You don't even need to login, as you may expect. You must remember that your new cloud machine is always working and was already "logged in".
@@ -198,29 +196,26 @@ You don't even need to login, as you may expect. You must remember that your new
 **What if I quit Terminal and turn off my local computer?**
 Does the instance stop to work?
 
-
-
-
- 
 **_Thanks to paul_bxd of the ethereum forum who initiated me to cloud mining with Ethereum and AWS EC2. Without his help and resources a wouldn’t be able to put this guide together._**
 
 ## Special announcement
 
 A special announcement by @paul_bxd
-```Now we are offering free space to host a server you buy. We can provide free power, internet and cooling. We ask for a % of the Ether you successfully mine. Is this of interest to you?```
- If you liked this post and want to see the next one reach me on @angelomilan on twitter and tell me you want it.
+```
+Now we are offering free space to host a server you buy. We can provide free power, internet and cooling. We ask for a % of the Ether you successfully mine. Is this of interest to you?
+```
+
+If you liked this post and want to see the next one reach me on @angelomilan on twitter and tell me you want it.
  
 Upcoming tutorials:
 How to cloud mine from your android device
 What the f**k is ethereum?
 
-
-
 ### References:
-http://ethereum.gitbooks.io/frontier-guide/content/gpu.html
-https://forum.ethereum.org/discussion/2129/need-a-how-to-for-digitalocean-vps
-https://forum.ethereum.org/discussion/296/cloud-mining
-http://cryptorials.io/how-to-install-ethereum-frontier-video-guide/
-https://aws.amazon.com/marketplace/pp/B00JV9JBDS/ref=srh_res_product_title?ie=UTF8&sr=0-2&qid=1432036933065
-https://aws.amazon.com/marketplace/pp/B00JV9TBA6/ref=srh_res_product_title?ie=UTF8&sr=0-3&qid=1432036933065
-http://forum.ethereum.org/discussion/2165/cloud-gpu-mining-with-amazon-aws-ec2#latest
+* http://ethereum.gitbooks.io/frontier-guide/content/gpu.html
+* https://forum.ethereum.org/discussion/2129/need-a-how-to-for-digitalocean-vps
+* https://forum.ethereum.org/discussion/296/cloud-mining
+* http://cryptorials.io/how-to-install-ethereum-frontier-video-guide/
+* https://aws.amazon.com/marketplace/pp/B00JV9JBDS/ref=srh_res_product_title?ie=UTF8&sr=0-2&qid=1432036933065
+* https://aws.amazon.com/marketplace/pp/B00JV9TBA6/ref=srh_res_product_title?ie=UTF8&sr=0-3&qid=1432036933065
+* http://forum.ethereum.org/discussion/2165/cloud-gpu-mining-with-amazon-aws-ec2#latest
