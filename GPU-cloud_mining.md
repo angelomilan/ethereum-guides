@@ -54,6 +54,8 @@ _Note: make always sure you are in the correct region (US East, N.Virginia as we
 
 The **ami-2cbf3e44**, like all the ubuntu 14.04 images, is supported by Ethereum Frontier, but in addition this pre-built AMI has all the NVIDIA GPU drivers, OpenCL, etc... all pre-installed. 
 
+* Select the **ami-2cbf3e44** and click on the blue button, **"Launch"**.
+
 ###Step 3 - Customize and review your instance
 
 Now we need to customize the instance to make sure we are doing things right. 
@@ -67,7 +69,15 @@ As we said in the intro, we need a GPU instance to mine Ethereum. If you scroll 
 
 _Note: At this point, if you want you can play with the **t2.micro free** instance before proceeding spending money._
 
-* We are ready, just click “Review and launch” at the bottom
+* Click on next and you will be redirected to "configure instance details" to access advanced settings for your instance. We suggest leaving everything as is, unless you feel extremely comfortable in what you are doing. A particularly interesting feature is the _"purchasing options"_: if you click on "request spot instances" you can specify the bid parameters for purchasing the computational power needed to launch your instance. 
+
+* Click on next and you will be redirected to the "add storage" screen. As discussed in the previous step, we would need to use at least 8 GB, with 20+ GB recommended. Do not edit these settings unless you are comfortable about what you are doing
+
+* Click on next and you will be redirected to the "tag instance" screen. We recommend not editing these settings. 
+
+* Click on next and you will be redirected to the "configure security group" screen. Since you do not want all the internet to be able to launch your instance, we recommend you upgrade the security settings and choose "My IP" under the tag "Source".  By doing so, only you (i.e., your IP) will be able to launch the instance.  
+
+* We are ready, just click “Review and launch” at the bottom and "Launch" in the next screen. 
 
 ###Step 4 - Launch
 
@@ -76,7 +86,7 @@ You will now be prompted to create your access key aka “Key pair”. To use a 
 * Click on “Create new key pair”:
 * Type a name for the access key
 * A **_.pem_** file will be automatically downloaded to your local machine, this is your private key.
-* Backup this file since you will need this for remote access to your virtual machine on the AWS cloud
+* Backup this file (for example, storing it in a USB pendrive) since you will need this for remote access to your virtual machine on the AWS cloud
 * Then click “Launch Instances”
 * All right, now on “View instances”
 
@@ -99,11 +109,45 @@ Note: you will need to use this line everytime you close Terminal and want to st
  
 On Windows:
 
-Follow this guide:
+To connect to your instance on Windows you will have to follow additional steps: 
 
-* [Connecting to Your Linux Instance from Windows Using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
+* Install PuTTY: Download and install PuTTY from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Be sure to install the entire suite.
 
-_Note: if these steps don’t work the first time, quit Terminal and do it again, you will eventually succeed (this happened to me)_
+* Convert your private key in .ppk format using PuTTYgen:     
+  * Start PuTTYgen (for example, from the Start menu, click All Programs > PuTTY > PuTTYgen).
+  * Under Type of key to generate, select SSH-2 RSA.
+  * Click Load. By default, PuTTYgen displays only files with the extension .ppk. To locate your .pem file, select the option to display files of all types.
+  * Select your .pem file for the key pair that you specified when you launch your instance, and then click Open. Click OK to dismiss the confirmation dialog box.
+  * Click Save private key to save the key in the format that PuTTY can use. PuTTYgen displays a warning about saving the key without a passphrase. Click Yes.
+
+  _Note: A passphrase on a private key is an extra layer of protection, so even if your private key is discovered, it can't be used without the passphrase. The downside to using a passphrase is that it makes automation harder because human intervention is needed to log on to an instance, or copy files to an instance._
+  * Specify the same name for the key that you used for the key pair (for example, _my-key-pair_). PuTTY automatically adds the .ppk file extension. 
+  * Your private key is now in the correct format for use with PuTTY. 
+
+* You can now connect to your instance using PuTTY's SSH client.
+
+  * Start PuTTY (from the Start menu, click All Programs > PuTTY > PuTTY).
+
+  * In the Category pane, select Session and complete the following fields:
+
+   - In the Host Name box, enter "ubuntu@public_dns_name" . Replace public_dns_name with the public DNS for your     instance, which you can view by using the EC2 console (check the Public DNS column; if this column is hidden, click the Show/Hide icon and select Public DNS).
+   - Under Connection type, select SSH.
+   - Ensure that Port is 22.  
+ 
+* Now you have to link your session to the private key you previously created
+
+  * In the Category pane, expand Connection, expand SSH, and then select Auth.
+  * Click Browse.
+  * Select the .ppk file that you generated for your key pair, and then click Open.
+  * (Optional) If you plan to start this session again later, you can save the session information for future use. Select Session in the Category tree, enter a name for the session in Saved Sessions, and then click Save.
+  * Click Open to start the PuTTY session.
+
+* If this is the first time you have connected to this instance, PuTTY displays a security alert dialog box that asks whether you trust the host you are connecting to.
+* Click Yes. A window opens and you are connected to your instance.
+
+_Note: If you specified a passphrase when you converted your private key to PuTTY's format, you must provide that passphrase when you log in to the instance._ 
+
+_Note 2: if these steps don’t work the first time, quit PuTTY and do it again. Click [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) for troubleshooting_
 
 ##Part 2 - Installing Ethereum on your instance and start mining
 
