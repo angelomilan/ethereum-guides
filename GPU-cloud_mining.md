@@ -4,8 +4,9 @@ LET THE ETHEREUM FORUM GUYS NOW WHEN COMPLETE
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
-This step by step tutorial is easy to follow. It is as easy as copy / pasting.
-Try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim.
+This step by step tutorial tries to be easy to follow. It is supposed to be as easy as copy / pasting but we acknowledge that a certain level of understanding and patience to follow the detailed instructions is needed. 
+
+Even if you lack of patience, try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim.
 
 ## Problem
 I want to mine Ether, but I do not want to use my machine and I do not want to invest on new hardware and pay thousand dollar electricity bills.
@@ -47,7 +48,7 @@ How can we find it? To find a Linux AMI using the Images page:
 * Open the Amazon EC2 console.
 * From the navigation bar, select **US East (N.Virginia)**;  
 * In the navigation pane, click **Images -> AMIs**; 
-* Switch to **Public Images** next to the search filter (the default is "Owned by Me" which will be at first empty, since you do not yet own any AMI)
+* Switch to **Public Images** next to the search filter (the default is _"Owned by Me"_ which will be at first empty, since you do not yet own any AMI)
 * Click on the search filter and then (search by) _AMI ID_ -> **ami-2cbf3e44**
 
 _Note: make always sure you are in the correct region (US East, N.Virginia as we said) otherwise you will not see the AMI we are insterested in on the list._
@@ -60,7 +61,7 @@ The **ami-2cbf3e44**, like all the ubuntu 14.04 images, is supported by Ethereum
 
 Now we need to customize the instance to make sure we are doing things right. 
 
-* You will be redirected to “Step 2: Choose an Instance Type”
+* You will be redirected to **“Step 2: Choose an Instance Type”**
 
 As we said in the intro, we need a GPU instance to mine Ethereum. If you scroll down the list you will see 2 GPU instances.
 
@@ -69,57 +70,55 @@ As we said in the intro, we need a GPU instance to mine Ethereum. If you scroll 
 
 _Note: At this point, if you want you can play with the **t2.micro free** instance before proceeding spending money._
 
-* Click on next and you will be redirected to "configure instance details" to access advanced settings for your instance. We suggest leaving everything as is, unless you feel extremely comfortable in what you are doing. A particularly interesting feature is the _"purchasing options"_: if you click on "request spot instances" you can specify the bid parameters for purchasing the computational power needed to launch your instance. 
+* Click on next and you will be redirected to **"configure instance details"** to access advanced settings for your instance. We suggest leaving everything as is, unless you feel extremely comfortable in what you are doing. A particularly interesting feature is the _"purchasing options"_: if you click on "request spot instances" you can specify the bid parameters for purchasing the computational power needed to launch your instance. 
 
-* Click on next and you will be redirected to the "add storage" screen. As discussed in the previous step, we would need to use at least 8 GB, with 20+ GB recommended. Do not edit these settings unless you are comfortable about what you are doing
+* Click on next and you will be redirected to the **"add storage"** screen. As discussed in the previous step, we would need to use at least 8 GB, with 20+ GB recommended. Do not edit these settings unless you are comfortable about what you are doing.
 
-* Click on next and you will be redirected to the "tag instance" screen. We recommend not editing these settings. 
+* Click on next and you will be redirected to the **"tag instance"** screen. We recommend not editing these settings. 
 
-* Click on next and you will be redirected to the "configure security group" screen. Since you do not want all the internet to be able to launch your instance, we recommend you upgrade the security settings and choose "My IP" under the tag "Source".  By doing so, only you (i.e., your IP) will be able to launch the instance.  
+* Click on next and you will be redirected to the **"configure security group"** screen. It is important that you  upgrade the security settings and choose "My IP" under the tag "Source".  By doing so, only you (i.e., your IP) will be able to launch the instance. Indeed, you do not want all the internet to be able to launch your instance. 
 
-* We are ready, just click “Review and launch” at the bottom and "Launch" in the next screen. 
+* We are ready, just click **“Review and launch”** at the bottom and **"Launch"** in the next screen. 
 
 ###Step 4 - Launch
 
 You will now be prompted to create your access key aka “Key pair”. To use a virtual machine we first need an access key (keep it private!). Amazon AWS access keys consist of a public key and a private key.
 
-* Click on “Create new key pair”:
+* Scroll the dropdown menu to **“Create new key pair”**
 * Type a name for the access key
 * A **_.pem_** file will be automatically downloaded to your local machine, this is your private key.
-* Backup this file (for example, storing it in a USB pendrive) since you will need this for remote access to your virtual machine on the AWS cloud
-* Then click “Launch Instances”
+* Backup this file (for example, storing it in a USB drive) since you will need this for remote access to your virtual machine on the AWS cloud
+* Then click **“Launch Instances”**
 * All right, now on “View instances”
 
 Your instance should be pre-selected. Click connect. Connecting to your Linux instance on AWS. 
 
 ###Step 5 - Connect your machine
 
-On your Mac: 
+**On your Mac:**
 
 * Put your **_.pem_** file in the folder _Applications > Utilities_ 
 * Launch Terminal
 * Type or copy/paste 
-```
-chmod 400 /Applications/Utilities/youraccesskeyname.pem
-ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
-```
-Note: you will need to use this line everytime you close Terminal and want to start again
+  ```
+  chmod 400 /Applications/Utilities/youraccesskeyname.pem
+  ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
+  ```
+  Note: you will need to use this line everytime you close Terminal and want to start again
 * Type yes
 * You should get a confirmation message ```Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0–37-generic x86_64)```
  
-On Windows:
+**On Windows:** 
 
 To connect to your instance on Windows you will have to follow additional steps: 
 
 * Install PuTTY: Download and install PuTTY from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Be sure to install the entire suite.
-
 * Convert your private key in .ppk format using PuTTYgen:     
   * Start PuTTYgen (for example, from the Start menu, click All Programs > PuTTY > PuTTYgen).
   * Under Type of key to generate, select SSH-2 RSA.
   * Click Load. By default, PuTTYgen displays only files with the extension .ppk. To locate your .pem file, select the option to display files of all types.
   * Select your .pem file for the key pair that you specified when you launch your instance, and then click Open. Click OK to dismiss the confirmation dialog box.
   * Click Save private key to save the key in the format that PuTTY can use. PuTTYgen displays a warning about saving the key without a passphrase. Click Yes.
-
   _Note: A passphrase on a private key is an extra layer of protection, so even if your private key is discovered, it can't be used without the passphrase. The downside to using a passphrase is that it makes automation harder because human intervention is needed to log on to an instance, or copy files to an instance._
   * Specify the same name for the key that you used for the key pair (for example, _my-key-pair_). PuTTY automatically adds the .ppk file extension. 
   * Your private key is now in the correct format for use with PuTTY. 
@@ -127,27 +126,41 @@ To connect to your instance on Windows you will have to follow additional steps:
 * You can now connect to your instance using PuTTY's SSH client.
 
   * Start PuTTY (from the Start menu, click All Programs > PuTTY > PuTTY).
-
   * In the Category pane, select Session and complete the following fields:
-
    - In the Host Name box, enter "ubuntu@public_dns_name" . Replace public_dns_name with the public DNS for your     instance, which you can view by using the EC2 console (check the Public DNS column; if this column is hidden, click the Show/Hide icon and select Public DNS).
    - Under Connection type, select SSH.
    - Ensure that Port is 22.  
- 
 * Now you have to link your session to the private key you previously created
-
   * In the Category pane, expand Connection, expand SSH, and then select Auth.
   * Click Browse.
   * Select the .ppk file that you generated for your key pair, and then click Open.
   * (Optional) If you plan to start this session again later, you can save the session information for future use. Select Session in the Category tree, enter a name for the session in Saved Sessions, and then click Save.
   * Click Open to start the PuTTY session.
-
 * If this is the first time you have connected to this instance, PuTTY displays a security alert dialog box that asks whether you trust the host you are connecting to.
 * Click Yes. A window opens and you are connected to your instance.
 
 _Note: If you specified a passphrase when you converted your private key to PuTTY's format, you must provide that passphrase when you log in to the instance._ 
 
 _Note 2: if these steps don’t work the first time, quit PuTTY and do it again. Click [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) for troubleshooting_
+
+###Step 6 (Optional) - Stopping or Terminating your instance
+
+Once you are done with your mining you have two choices: 
+
+1. **Stop** the instance. This will shut down the instance, but makes it easy to restart it. Amazon AWS does not charge hourly usage for a stopped instance, but does charge for the storage. To stop an instance:
+
+  * In the navigation pane, click Instances, and select the instance.
+  * Click Actions, select Instance State, and then click Stop.
+  * In the confirmation dialog box, click Yes, Stop. It can take a few minutes for the instance to stop.
+  * To restart the stopped instance, select the instance, click Actions, select Instance State, and then click Start.
+  * In the confirmation dialog box, click Yes, Start. It can take a few minutes for the instance to enter the running state.
+
+2. **Terminate** the instance. This will stop you incurring charges, but you cannot connect to or restart an instance after you've terminated it. To terminate an instance:
+
+  * Open the Amazon EC2 console.
+  * In the navigation pane, click Instances.
+  * Select the instance, click Actions, select Instance State, and then click Terminate.
+  * Click Yes, Terminate when prompted for confirmation.
 
 ##Part 2 - Installing Ethereum on your instance and start mining
 
