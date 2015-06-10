@@ -40,7 +40,6 @@ An **Amazon Machine Image (AMI)** "provides the information required to launch a
 For our purposes, we need to use the following AMI: 
 
 * Image: **ami-2cbf3e44** for US-East or **ami-c38babf3** for US-West (Ubuntu Server 14.04 LTS (HVM) – CUDA 6.5)
-* Instance type: **g2.2xlarge** (if you skip this step, you won’t have an nvidia device)
 * Storage: Use at least 8 GB, 20+ GB recommended
 
 How can we find it? To find a Linux AMI using the Images page:
