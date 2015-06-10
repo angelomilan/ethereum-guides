@@ -114,14 +114,19 @@ Your instance should be pre-selected. Wait about 5 minutes for the Initializing 
 
 * Put your **_.pem_** file in the folder _Applications > Utilities_ 
 * Launch Terminal
-* Type or copy/paste 
-   ```
-   chmod 400 /Applications/Utilities/youraccesskeyname.pem
-   ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
-   ```
-  Note: you will need to use this line everytime you close Terminal and want to start again
+* Type or copy/paste
+
+      ```
+      chmod 400 /Applications/Utilities/youraccesskeyname.pem
+      ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
+      ```
+
+Note: you will need to use this line everytime you close Terminal and want to start again
+
 * Type yes
-* You should get a confirmation message ```Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0–37-generic x86_64)```
+* You should get a confirmation message: 
+
+     ```Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0–37-generic x86_64)```
  
 **On Windows:** 
 
@@ -164,100 +169,106 @@ Ethereum client comes in 3 implementations. One written in [Go language](https:/
 At the moment, the only implementation supporting GPU mining is the [C++ implementation](https://github.com/ethereum/cpp-ethereum). However, the live testnet is running on the Go implementation (oh dear...). So you will need the Go implementation to read, synchronize the chain and credit Ether on your account, but the C++ miner to have GPU support. 
 Anyway...
 
-###Step 1 - Build the Go-Ethereum command line client (geth) from source 
+###Step 1 - Build the Go-Ethereum command line client (geth) from source and download the blockchain
 
 * Clone the repository to a directory of your choosing by typing: 
+
    ```
    git clone https://github.com/ethereum/go-ethereum
    ```
 * Building geth requires some external libraries to be installed. Type: 
+
     ```
     sudo apt-get install -y build-essential libgmp3-dev golang
     ```
 * Finally, build the geth program using the following command.
+
     ```
     cd go-ethereum
     make geth
     ```
-* Run geth and leave it to catch up on the chain: 
+
+* Run geth and leave it to download the blockchain. You will read “Block synchronization started”: 
+
     ```
-    ~/go-ethereum/build/bin/geth  #or replace "~/" with your directory (e.g. "~/mypc/documents/go-ethereum")
+    ~/go-ethereum/build/bin/geth  # or replace "~/" with your directory (e.g. "~/mypc/documents/go-ethereum")
     ```
+
+_"Catching up on the chain"_ means - in essence - that you need to **"download" the full blockchain to your cloud machine before you can start mining.** That is why we reccomended to get at least 20+ GB of space!
+
+On the current testnet, you will need to wait a few hours for this process to be completed.
+
+* You will know that **geth** has finishing catching up with (i.e. downloading) the blockchain when instead of importing - say - 256 blocks at a time **_("imported 256 block(s) (0 queued 0 ignored) in 449.34258ms.")_**, it will start importing 1 block at a time **_(“imported 1 block(s) (0 queued 0 ignored) in 3.2345ms.")_**. 
+
+Also, you can see what is the current block of the testnet by viewing the [Testnet stats dashboard](https://stats.ethdev.com/) under the heading **Best Block**. 
+
+* Once this process is completed, you you can type ctrl+c to exit **geth**
 
 ###Step 2 - Install the C++ miner (ethminer)
 
-* Install ethminer. Again, following the [cpp-ethereum dev PPAs guide]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit) here is the important part. Ready to copy & paste? This time, you will need to hit ENTER 2 times after every line you paste. In fact, the program will ask you to confirm with one more ENTER
+* Install ethminer. Again, following the [cpp-ethereum dev PPAs guide]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit). 
+
 Let's do this:
-```
-sudo add-apt-repository ppa:ethereum/ethereum-qt
-sudo add-apt-repository ppa:ethereum/ethereum
-sudo apt-get update
-sudo apt-get install cpp-ethereum 
-```
 
-_Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_
+      ```
+      sudo add-apt-repository -y ppa:ethereum/ethereum-qt
+      sudo add-apt-repository -y ppa:ethereum/ethereum
+      sudo apt-get update
+      sudo apt-get install cpp-ethereum 
+      ```
 
-
+**_Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_**
 
 _Note 2: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
 
+###Step 3 - Create a new account on geth
 
+So, once **geth** has finished its synchronisation with the blockchain, you have to **generate a new account**. This will be your "wallet", which will store the ether you mine. **_Your wallet will be stored in the hidden folder ~/.ethereum (in the /keystore subfolder). In the same folder you will find the files of the blockchain._**
 
+* To generate a new account type:
 
- 
+      ```
+      ~/go-ethereum/build/bin/geth account new
+      ``` 
 
-###Step 3 - Create a new account and run the syncro between the Go and C++ clients
+* The system will ask for a 'Passphrase",  aka a password. After the password is inputted (twice), you will be given an Address. Back it up in a notepad. 
 
-What's this account, and why you need it? [Is this the "wallet"?]
-[do I need this to put "inside" it the ether I mine?]
+_Note: If you lose your keys, you lose access to the account and its ether balance, permanently. Private keys cannot be generated from public ones (obviously) and the password you're asked for when creating the account is just a means to encrypt the private key, not regenerate it. Therefore, remember your password!!!!_
 
+* You can view if the account generation was successful with 
+      ```
+      geth account list
+      ``` 
 
-* So, once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new```  or simply ```geth account new``` (you can view if that was successful with ```geth account list```). 
-* The system will ask for a 'Passphrase" aka a password. To generate a complex password use thise tool called Last Pass http://lastpass.com and save it to your notepad.
-* You will be given an Address. Back it up in a notepad. 
+* At any time to check your Ether balance:
 
-### Step 5 Ethereum Blockchain sync
+      ```
+      geth console
+      web3.fromWei(eth.getBalance(eth.coinbase), "ether")
+      ```
 
-* Run the client and let it catch up with the "test-chain" typing ```geth``` then hit ENTER  and wait until the client finishes catching up on the blockchain.
-* You will see “Block synchronization started”
-Wait for geth to catchup with the block chain.
-What  does it mean?
-You need to “download” the full blockchain to your cloud machine before you can start mining.
-That’s why I told you to get at 20+ GB of space.
+### Step 4 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
 
-You will see terminal outputting lines like this:
- “imported 256 block(s) (0 queued 0 ignored) in 449.34258ms. “
+* Start again **geth** with RPC (remote procedure call) enabled: 
 
-These are all the “blocks” of the blockchain you are downloading to your machine to be in sync.
-You need to wait few hours to complete. How do you know when it has finished downloading?
-Easy: instead of downloading 256 blocks at a time, you will start acquiring  1 block at a time.
-That's the signal!
-*now you can ctrl+c  to exit Geth 
+      ```
+      ~/go-ethereum/build/bin/geth --rpc console
+      ```
 
-##Backing up your chain and keys
-to do
-
-public key: address
-private key: passphrase
-
-right?
-
-" If you lose your keys, you lose access to the account and its ether balance, permanently. Private keys cannot be generated from public ones (obviously) and the password you're asked for when creating the account is just a means to encrypt the private key, not regenerate it."
-
-### Step 6 Start Ethminer (finally!)
-
-* Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
-* start ethminer: ```ethminer -M -G --opencl-device 0```
+* Start ethminer: 
+      ```
+      ethminer -M -G --opencl-device 0
+      ```
 
 _Note: if you're using the larger g2 instance with 4 GPUs (the 2.8) you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ 
-So, you will need to start ethiminer 3 more times with these commands:
 
-```
-ethminer -M -G --opencl-device 1
-ethminer -M -G --opencl-device 2
-ethminer -M -G --opencl-device 3
-```
+So, you will need to start ethminer 3 more times with these commands:
 
+      ```
+      ethminer -M -G --opencl-device 1
+      ethminer -M -G --opencl-device 2
+      ethminer -M -G --opencl-device 3
+      ```
 
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
 
@@ -285,37 +296,30 @@ PICTURE HERE
 
 _Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
-
-
-
 ## Q&A
-** How can I benchmark my instance aka check hasharate?
-benchmark ethminer to check that your system is in order: 
+
+Q: How can I benchmark my instance aka check hashrate?
+A: benchmark ethminer to check that your system is in order:
+
 ```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
 
+Q: Ethereum blockchain sync: how long does it take to download the full blockchain?
+A: You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
 
-**Ethereum blockchain sync: how long does it take to download the full blockchain?
+Q: What if I quit Terminal and turn off my local computer?
+Q: Does I need to leave my computer always on, can I close Terminal?
+A: You should know that your new cloud machine is always working and was already "logged in". (Unless you terminate the instance)
 
-You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
-
-
-**How can I check that the work my Instance has done went to my address? In other words, how can I check my Ether balance?
-
-
-**What if I quit Terminal and turn off my local computer?**
-
-
-
-**Does I need to leave my computer always on, can I close Terminal?
-You should know that your new cloud machine is always working and was already "logged in". (Unless you terminate the instance)
 Next time you want to connect to your instance with Terminal and check things, you just need to type these lines:
-```ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP```
+
+      ```
+      ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
+      ```
+
 (You don't need to re-install the client and the miner every time.)
 You don't even need to login, as you may expect. 
 
-
-
-##Stopping or Terminating your instance
+###Step 5 - Stopping or Terminating your instance
 
 Once you are done with your mining you have two choices: 
 
@@ -333,29 +337,30 @@ Once you are done with your mining you have two choices:
   * In the navigation pane, click Instances.
   * Select the instance, click Actions, select Instance State, and then click Terminate.
   * Click Yes, Terminate when prompted for confirmation.
-  * 
-  
 
-**_Thanks to paul_bxd of the ethereum forum who initiated me to cloud mining with Ethereum and AWS EC2. Without his help and resources a wouldn’t be able to put this guide together._**
+**_Thanks to paul_bxd of the Ethereum forum who initiated us to cloud mining with Ethereum and AWS EC2. Without his help and resources we would not be able to put this guide together._**
 
 ## Special announcement
 
 A special announcement by @paul_bxd
+
 ```
 Now we are offering free space to host a server you buy. We can provide free power, internet and cooling. We ask for a % of the Ether you successfully mine. Is this of interest to you?
 ```
+
 **Contacts
+
 If you liked this tutorial and:
 * need help
 * want new Ethereum"for dummies" tutorials
 * want to contribute with proof reading or for upcoming tutorials
 
-reach me on twitter or on the ethereum official forum @angelomilan
+reach us on twitter or on the ethereum official forum @angelomilan, @terzim
  
 Upcoming tutorials:
 How to cloud mine from your android device
 How to monitor your aws instance from your iPhone or Android
-What the f**k is ethereum?
+What is exactly ethereum?
 
 ### References:
 * http://ethereum.gitbooks.io/frontier-guide/content/gpu.html
