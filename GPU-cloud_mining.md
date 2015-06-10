@@ -1,4 +1,4 @@
-# Ethereum cloud mining for dummies
+# ETHEREUM CLOUD MINING FOR DUMMIES
 
 ![who wants to learn about ethereum uh](https://github.com/angelomilan/ethereum-guides/blob/master/images/250.gif)
 
@@ -6,16 +6,16 @@ LET THE ETHEREUM FORUM GUYS KNOW WHEN COMPLETE
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
-** Warning: this has been tested on the Frontier test-net. You won't be able to mine "real" ether until the "real" blockchain is released. You can [check Frontier status here](https://github.com/ethereum/go-ethereum/milestones)
+** Warning: this has been tested on the Frontier test-net. You won't be able to mine "real" ether until the "real" blockchain is released. You can [check Frontier status here](https://github.com/ethereum/go-ethereum/milestones) **
 
 This step by step tutorial tries to be easy to follow. It is supposed to be as easy as copy / pasting but we acknowledge that a certain level of understanding and patience to follow the detailed instructions is needed. 
 
 Even if you lack of patience, try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim.
 
-## Problem
+## PROBLEM
 I want to mine Ether, but I do not want to use my machine and I do not want to invest on new hardware and pay thousand dollar electricity bills.
 
-## Solution: **cloud mining** aka using Amazon’s cloud servers
+## SOLUTION: **cloud mining** aka using Amazon’s cloud servers
 
 Since GPU mining is set to be 100x more efficient than CPU with Ethereum, we need to look to renting GPU power on the cloud.
 The answer, apparently, is **Amazon Web services EC2**. 
@@ -24,11 +24,11 @@ On [Ethereum forum](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out
 
 The tutorial is divided in two parts. In the first, we are going to create an Ubuntu Linux virtual machine on Amazon Web Services (AWS) EC2 (Elastic Compute Cloud); in the second part, we are going to install Ethereum C++ miner on Ubuntu. 
 
-##Part 1 - Creating an Ubuntu Linux virtual machine on Amazon Web Services (AWS) EC2 (Elastic Compute Cloud)
+##Part 1 - Creating an Ubuntu Linux virtual machine on AWS EC2 (Amazon Web Services, Elastic Compute Cloud)
 
 ###Step 1 - Get an AWS account
 
-First things first: get an AWS account [here](http://aws.amazon.com).
+First things first: [get an AWS account here](http://aws.amazon.com).
 
 Amazon Web Services (AWS) is a cloud computing service provided by Amazon, the well known e-commerce giant. 
 
@@ -45,14 +45,14 @@ Once you have registered on [AWS](http://aws.amazon.com), you will be presented 
 
 Click on **EC2** (stands for, Elastic Compute Cloud), that will give you GPU horsepower for mining the Ethereum blockchain.
 
-###Step 2 - Setup the pre-built Amazon Machine Image (AMI) on Amazon AWS EC2
+###Step 2 - Setup the pre-built AMI (Amazon Machine Image) on AWS EC2
 
-An **Amazon Machine Image (AMI)** "provides the information required to launch an instance, which is a virtual server in the cloud".
+An **Amazon Machine Image (AMI)** _"provides the information required to launch an instance, which is a virtual server in the cloud"._
 
 For our purposes, we need to use the following AMI: 
 
-* Image: **ami-2cbf3e44** for US-East or **ami-c38babf3** for US-West (Ubuntu Server 14.04 LTS (HVM) – CUDA 6.5)
-* Storage: Use at least 8 GB, 20+ GB recommended
+* IMAGE: **ami-2cbf3e44** for US-East or **ami-c38babf3** for US-West (Ubuntu Server 14.04 LTS (HVM) – CUDA 6.5)
+* STORAGE: Use at least 8 GB, 20+ GB recommended
 
 How can we find it? To find a Linux AMI using the Images page:
 
@@ -85,7 +85,7 @@ _Note: At this point, if you want you can play with the **t2.micro free** instan
 
 * Click on "next" and you will be redirected to the **"add storage"** screen. As discussed in the previous step, we would need to use at least 8 GB, with 20+ GB recommended. Do not edit these settings unless you are comfortable about what you are doing.
 
-* Click on "next" and you will be redirected to the **"tag instance"** screen. We recommend not editing these settings. 
+* Click on "next" and you will be redirected to the **"tag instance"** screen. We recommend not to edit these settings. 
 
 * Click on "next" and you will be redirected to the **"configure security group"** screen. It is important that you  upgrade the security settings and choose "My IP" under the tag "Source".  By doing so, only you (i.e., your IP) will be able to launch the instance. Indeed, you do not want all the internet to be able to launch your instance!!
 
@@ -148,13 +148,15 @@ To connect to your instance on Windows you will have to follow additional steps:
    * In the Category pane, select Session and complete the following fields:
       - In the Host Name box, enter "ubuntu@public_dns_name" . Replace public_dns_name with the public DNS for your instance, which you can view by using the EC2 console (check the Public DNS column; if this column is hidden, click the Show/Hide icon and select Public DNS).
      - Under Connection type, select SSH.
-     - Ensure that Port is 22.  
+     - Ensure that Port is 22.
+
 * Now you have to link your session to the private key you previously created
    * In the Category pane, expand Connection, expand SSH, and then select Auth.
    * Click Browse.
    * Select the .ppk file that you generated for your key pair, and then click Open.
    * (Optional) If you plan to start this session again later, you can save the session information for future use. Select Session in the Category tree, enter a name for the session in Saved Sessions, and then click Save.
    * Click Open to start the PuTTY session.
+
 * If this is the first time you have connected to this instance, PuTTY displays a security alert dialog box that asks whether you trust the host you are connecting to.
 * Click Yes. A window opens and you are connected to your instance.
 
@@ -166,10 +168,13 @@ _Note 2: if these steps don’t work the first time, quit PuTTY and do it again.
 
 Ethereum client comes in 3 implementations. One written in [Go language](https://github.com/ethereum/go-ethereum), another written in [C++](https://github.com/ethereum/cpp-ethereum), and the third written in [Phyton](https://github.com/ethereum/pyethereum). 
 
-At the moment, the only implementation supporting GPU mining is the [C++ implementation](https://github.com/ethereum/cpp-ethereum). However, the live testnet is running on the Go implementation (oh dear...). So you will need the Go implementation to read, synchronize the chain and credit Ether on your account, but the C++ miner to have GPU support. 
+At the moment, the only implementation supporting GPU mining is the [C++ implementation](https://github.com/ethereum/cpp-ethereum). However, the live testnet is running on the [Go implementation](https://github.com/ethereum/go-ethereum) (oh dear...). 
+
+Therefore, you will need the Go implementation to read, synchronize the chain and credit Ether on your account, but it is the C++ miner to have GPU support. 
+
 Anyway...
 
-###Step 1 - Build the Go-Ethereum command line client (geth) from source and download the blockchain
+###Step 1 - Build geth (the Go-Ethereum command line client) from source
 
 * Clone the repository to a directory of your choosing by typing: 
 
@@ -188,40 +193,52 @@ Anyway...
     make geth
     ```
 
+###Step 2 - Use geth to download the blockchain
+
 * Run geth and leave it to download the blockchain. You will read “Block synchronization started”: 
 
     ```
     ~/go-ethereum/build/bin/geth  # or replace "~/" with your directory (e.g. "~/mypc/documents/go-ethereum")
     ```
 
-_"Catching up on the chain"_ means - in essence - that you need to **"download" the full blockchain to your cloud machine before you can start mining.** That is why we reccomended to get at least 20+ GB of space!
+This command will **"download" the full blockchain to your cloud machine before you can start mining.** That is why we recommended to get at least 20+ GB of space!
 
 On the current testnet, you will need to wait a few hours for this process to be completed.
 
-* You will know that **geth** has finishing catching up with (i.e. downloading) the blockchain when instead of importing - say - 256 blocks at a time **_("imported 256 block(s) (0 queued 0 ignored) in 449.34258ms.")_**, it will start importing 1 block at a time **_(“imported 1 block(s) (0 queued 0 ignored) in 3.2345ms.")_**. 
+* You will know that **geth** has finishing catching up with (i.e. downloading) the blockchain when instead of importing - say - 256 blocks at a time 
+
+```
+("imported 256 block(s) (0 queued 0 ignored) in 449.34258ms.")
+```
+
+...it will start importing only 1 block at a time 
+
+```
+(“imported 1 block(s) (0 queued 0 ignored) in 3.2345ms.")
+```
 
 Also, you can see what is the current block of the testnet by viewing the [Testnet stats dashboard](https://stats.ethdev.com/) under the heading **Best Block**. 
 
-* Once this process is completed, you you can type ctrl+c to exit **geth**
+* Once this process is completed, you can type ctrl+c to **exit geth**
 
-###Step 2 - Install the C++ miner (ethminer)
+###Step 3 - Install the C++ miner (ethminer)
 
 * Install ethminer. Again, following the [cpp-ethereum dev PPAs guide]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit). 
 
 Let's do this:
 
-      ```
-      sudo add-apt-repository -y ppa:ethereum/ethereum-qt
-      sudo add-apt-repository -y ppa:ethereum/ethereum
-      sudo apt-get update
-      sudo apt-get install cpp-ethereum 
-      ```
+```
+sudo add-apt-repository -y ppa:ethereum/ethereum-qt
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install cpp-ethereum 
+```
 
 **_Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_**
 
 _Note 2: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
 
-###Step 3 - Create a new account on geth
+###Step 4 - Create a new account on geth
 
 So, once **geth** has finished its synchronisation with the blockchain, you have to **generate a new account**. This will be your "wallet", which will store the ether you mine. **_Your wallet will be stored in the hidden folder ~/.ethereum (in the /keystore subfolder). In the same folder you will find the files of the blockchain._**
 
@@ -244,10 +261,13 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
 
       ```
       geth console
-      web3.fromWei(eth.getBalance(eth.coinbase), "ether")
+      > web3.fromWei(eth.getBalance(eth.coinbase), "ether")
+      6.5
       ```
 
-### Step 4 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
+* For more information on accounts and user interaction with accounts visit the [Go-ethereum Wiki - Managing Your Accounts](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts)
+
+### Step 5 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
 
 * Start again **geth** with RPC (remote procedure call) enabled: 
 
@@ -255,7 +275,7 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
       ~/go-ethereum/build/bin/geth --rpc console
       ```
 
-* Start ethminer: 
+* In another window terminal, start ethminer: 
       ```
       ethminer -M -G --opencl-device 0
       ```
@@ -264,11 +284,9 @@ _Note: if you're using the larger g2 instance with 4 GPUs (the 2.8) you may need
 
 So, you will need to start ethminer 3 more times with these commands:
 
-      ```
       ethminer -M -G --opencl-device 1
       ethminer -M -G --opencl-device 2
       ethminer -M -G --opencl-device 3
-      ```
 
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
 
@@ -298,17 +316,17 @@ _Note, if you encounter any issue or bug on this part 2 of the guide, please see
 
 ## Q&A
 
-Q: How can I benchmark my instance aka check hashrate?
-A: benchmark ethminer to check that your system is in order:
+**Q**: How can I benchmark my instance aka check hashrate?  
+**A**: benchmark ethminer to check that your system is in order:
 
-```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
+```ethminer -G -M     #(should give you your current hashrate, roughly 6MH/s)```
 
-Q: Ethereum blockchain sync: how long does it take to download the full blockchain?
-A: You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
+**Q**: Ethereum blockchain sync: how long does it take to download the full blockchain?  
+**A**: You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
 
-Q: What if I quit Terminal and turn off my local computer?
-Q: Does I need to leave my computer always on, can I close Terminal?
-A: You should know that your new cloud machine is always working and was already "logged in". (Unless you terminate the instance)
+**Q**: What if I quit Terminal and turn off my local computer?  
+**Q**: Does I need to leave my computer always on, can I close Terminal?  
+**A**: You should know that your new cloud machine is always working and was already "logged in". (Unless you terminate the instance)
 
 Next time you want to connect to your instance with Terminal and check things, you just need to type these lines:
 
