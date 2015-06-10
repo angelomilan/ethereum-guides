@@ -142,24 +142,7 @@ _Note: If you specified a passphrase when you converted your private key to PuTT
 
 _Note 2: if these steps don’t work the first time, quit PuTTY and do it again. Click [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) for troubleshooting_
 
-###Step 6 (Optional) - Stopping or Terminating your instance
 
-Once you are done with your mining you have two choices: 
-
-1. **Stop** the instance. This will shut down the instance, but makes it easy to restart it. Amazon AWS does not charge hourly usage for a stopped instance, but does charge for the storage. To stop an instance:
-
-  * In the navigation pane, click Instances, and select the instance.
-  * Click Actions, select Instance State, and then click Stop.
-  * In the confirmation dialog box, click Yes, Stop. It can take a few minutes for the instance to stop.
-  * To restart the stopped instance, select the instance, click Actions, select Instance State, and then click Start.
-  * In the confirmation dialog box, click Yes, Start. It can take a few minutes for the instance to enter the running state.
-
-2. **Terminate** the instance. This will stop you incurring charges, but you cannot connect to or restart an instance after you've terminated it. To terminate an instance:
-
-  * Open the Amazon EC2 console.
-  * In the navigation pane, click Instances.
-  * Select the instance, click Actions, select Instance State, and then click Terminate.
-  * Click Yes, Terminate when prompted for confirmation.
 
 ##Part 2 - Installing Ethereum on your instance and start mining
 
@@ -180,13 +163,9 @@ sudo apt-get update
 sudo apt-get install ethereum
 ```
 Copy/ paste and hit ENTER on your keyboard, one line at a time
-Next time, to run the client and let it catch up with the "test-chain". 
-Type:
-```geth``` or 
-```~/go-ethereum/build/bin/geth```  and hit ENTER.
 
-[But, wait don't do it! We still need to go through Step 2
-or you will see the message "Block syncronization started" and terminal won't respond to your commands.]
+
+
 
 ###Step 2 - Install the C++ miner (ethminer)
 
@@ -206,16 +185,10 @@ _Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) an
 
 _Note: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
 
-You can now type ```geth```  and wait until the client finishes catching up on the blockchain. 
-You will know that it's happened when you see lines like this coming in automatically:
 
- ``` I0607 21:55:54.122065    1392 chain_manager.go:662] imported 256 block(s) (0 queued 0 ignored) in 1.388846498s. #175604 [9e9b2828 / 58bacf39]``` 
+
+
  
-``` I0607 21:55:56.828199    1392 chain_manager.go:662] imported 256 block(s) (0 queued 0 ignored) in 2.705918036s. #175860 [36775f4a / cb47a14d]``` 
-
-like... every second.
-
-[No... maybe those lines are not "the client catching up on the blockchain"  ....like before if I type geth those lines coming in won't allow me to go any further... I type the command "geth account new" but the system ignores it]
 
 ###Step 3 - Create a new account and run the syncro between the Go and C++ clients
 
@@ -226,6 +199,10 @@ What's this account, and why you need it? [Is this the "wallet"?]
 * So, once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new```  or simply ```geth account new``` (you can view if that was successful with ```geth account list```). 
 * The system will ask for a 'Passphrase" aka a password. To generate a complex password use thise tool called Last Pass http://lastpass.com and save it to your notepad.
 * You will be given an Address. Back it up in a notepad. 
+* Run the client and let it catch up with the "test-chain" You can now type ```geth```  and wait until the client finishes catching up on the blockchain. . 
+Type:
+```geth``` or 
+```~/go-ethereum/build/bin/geth```  and hit ENTER.
 * Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
 * start ethminer: ```ethminer -M -G --opencl-device 0```
 
@@ -257,6 +234,26 @@ You don't even need to login, as you may expect. You must remember that your new
 ## Q&A
 **What if I quit Terminal and turn off my local computer?**
 Does the instance stop to work?
+
+
+###Step 6 (Optional) - Stopping or Terminating your instance
+
+Once you are done with your mining you have two choices: 
+
+1. **Stop** the instance. This will shut down the instance, but makes it easy to restart it. Amazon AWS does not charge hourly usage for a stopped instance, but does charge for the storage. To stop an instance:
+
+  * In the navigation pane, click Instances, and select the instance.
+  * Click Actions, select Instance State, and then click Stop.
+  * In the confirmation dialog box, click Yes, Stop. It can take a few minutes for the instance to stop.
+  * To restart the stopped instance, select the instance, click Actions, select Instance State, and then click Start.
+  * In the confirmation dialog box, click Yes, Start. It can take a few minutes for the instance to enter the running state.
+
+2. **Terminate** the instance. This will stop you incurring charges, but you cannot connect to or restart an instance after you've terminated it. To terminate an instance:
+
+  * Open the Amazon EC2 console.
+  * In the navigation pane, click Instances.
+  * Select the instance, click Actions, select Instance State, and then click Terminate.
+  * Click Yes, Terminate when prompted for confirmation.
 
 **_Thanks to paul_bxd of the ethereum forum who initiated me to cloud mining with Ethereum and AWS EC2. Without his help and resources a wouldn’t be able to put this guide together._**
 
