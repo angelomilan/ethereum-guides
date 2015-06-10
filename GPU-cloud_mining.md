@@ -1,11 +1,12 @@
 # Ethereum cloud mining for dummies
 
 ![who wants to learn about ethereum uh](https://github.com/angelomilan/ethereum-guides/blob/master/images/250.gif)
+
 LET THE ETHEREUM FORUM GUYS KNOW WHEN COMPLETE
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
-Warning: this has been tested on the test-net. You won't be able to mine "real" ether until Frontier is release. You can check frontier status here: https://github.com/ethereum/go-ethereum/milestones
+** Warning: this has been tested on the Frontier test-net. You won't be able to mine "real" ether until the "real" blockchain is released. You can [check Frontier status here](https://github.com/ethereum/go-ethereum/milestones)
 
 This step by step tutorial tries to be easy to follow. It is supposed to be as easy as copy / pasting but we acknowledge that a certain level of understanding and patience to follow the detailed instructions is needed. 
 
@@ -14,9 +15,9 @@ Even if you lack of patience, try to understand step by step what you are doing.
 ## Problem
 I want to mine Ether, but I do not want to use my machine and I do not want to invest on new hardware and pay thousand dollar electricity bills.
 
-## Solution: **cloud mining** aka using Amazon’s cloud servers.
+## Solution: **cloud mining** aka using Amazon’s cloud servers
 
-Since GPU mining is set to be 100x more efficient than CPU with Ethereum, we need to look for GPU power on the cloud.
+Since GPU mining is set to be 100x more efficient than CPU with Ethereum, we need to look to renting GPU power on the cloud.
 The answer, apparently, is **Amazon Web services EC2**. 
 
 On [Ethereum forum](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores) @paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
@@ -29,14 +30,12 @@ The tutorial is divided in two parts. In the first, we are going to create an Ub
 
 First things first: get an AWS account [here](http://aws.amazon.com).
 
-
-
 Amazon Web Services (AWS) is a cloud computing service provided by Amazon, the well known e-commerce giant. 
 
 Click on the top-right button:
 ![create an aws account](https://github.com/angelomilan/ethereum-guides/blob/master/images/gpu-cloud-mining/1-create-aws-account__top-right-button.png)
 
-As you can see, the registration process is very handy, since you can sign-in with your existing Amazon account.
+As you can see, the registration process is very handy, since you can sign-in with **your existing Amazon account**.
 You may notice that AWS offers the EC2 service free for 750 hrs/month, for 12 months. However, that is for the Linux _t2.micro instance_. That is good for testing, but not for mining Ethereum. I will tell you later what instance to select to maximize the GPU power.
 
 Once you have registered on [AWS](http://aws.amazon.com), you will be presented with a big list of the services offered by Amazon. 
@@ -82,13 +81,13 @@ As we said in the intro, we need a GPU instance to mine Ethereum. If you scroll 
 
 _Note: At this point, if you want you can play with the **t2.micro free** instance before proceeding spending money._
 
-* Click on next and you will be redirected to **"configure instance details"** to access advanced settings for your instance. We suggest leaving everything as is, unless you feel extremely comfortable in what you are doing. A particularly interesting feature is the _"purchasing options"_: if you click on "request spot instances" you can specify the bid parameters for purchasing the computational power needed to launch your instance. Don't overlook this feature if you want to be in control of the instance costs. As Amazon suggests: You have the option to request Spot Instances and specify the maximum price you are willing to pay per instance hour. If you bid higher than the current Spot Price, your Spot Instance is launched and will be charged at the current Spot Price. Spot Prices often are significantly lower than On-Demand prices, so using Spot Instances for flexible, interruption-tolerant applications can lower your instance costs by up to 90%. Learn more about Spot Instances.https://docs.aws.amazon.com/console/ec2/spot-instances. I want to highligth this: IF YOU ARE INTERRUPTION-TOLERANT
+* Click on "next" and you will be redirected to **"configure instance details"** to access advanced settings for your instance. We suggest leaving everything as is, unless you feel extremely comfortable in what you are doing. A particularly interesting feature is the _"purchasing options"_: if you click on "request spot instances" you can specify the bid parameters for purchasing the computational power needed to launch your instance. Don't overlook this feature if you want to be in control of the instance costs. As Amazon suggests: you have the option to request Spot Instances and specify the maximum price you are willing to pay per instance hour. If you bid higher than the current Spot Price, your Spot Instance is launched and will be charged at the current Spot Price. Spot Prices often are significantly lower than On-Demand prices, so using Spot Instances for flexible, interruption-tolerant applications can lower your instance costs by up to 90%. Learn more about Spot Instances: https://docs.aws.amazon.com/console/ec2/spot-instances. We want to highligth this: IF YOU ARE INTERRUPTION-TOLERANT!
 
-* Click on next and you will be redirected to the **"add storage"** screen. As discussed in the previous step, we would need to use at least 8 GB, with 20+ GB recommended. Do not edit these settings unless you are comfortable about what you are doing.
+* Click on "next" and you will be redirected to the **"add storage"** screen. As discussed in the previous step, we would need to use at least 8 GB, with 20+ GB recommended. Do not edit these settings unless you are comfortable about what you are doing.
 
-* Click on next and you will be redirected to the **"tag instance"** screen. We recommend not editing these settings. 
+* Click on "next" and you will be redirected to the **"tag instance"** screen. We recommend not editing these settings. 
 
-* Click on next and you will be redirected to the **"configure security group"** screen. It is important that you  upgrade the security settings and choose "My IP" under the tag "Source".  By doing so, only you (i.e., your IP) will be able to launch the instance. Indeed, you do not want all the internet to be able to launch your instance. 
+* Click on "next" and you will be redirected to the **"configure security group"** screen. It is important that you  upgrade the security settings and choose "My IP" under the tag "Source".  By doing so, only you (i.e., your IP) will be able to launch the instance. Indeed, you do not want all the internet to be able to launch your instance!!
 
 * We are ready, just click **“Review and launch”** at the bottom and **"Launch"** in the next screen. 
 
@@ -116,10 +115,10 @@ Your instance should be pre-selected. Wait about 5 minutes for the Initializing 
 * Put your **_.pem_** file in the folder _Applications > Utilities_ 
 * Launch Terminal
 * Type or copy/paste 
-  ```
-  chmod 400 /Applications/Utilities/youraccesskeyname.pem
-  ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
-  ```
+   ```
+   chmod 400 /Applications/Utilities/youraccesskeyname.pem
+   ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
+   ```
   Note: you will need to use this line everytime you close Terminal and want to start again
 * Type yes
 * You should get a confirmation message ```Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0–37-generic x86_64)```
@@ -130,36 +129,33 @@ To connect to your instance on Windows you will have to follow additional steps:
 
 * Install PuTTY: Download and install PuTTY from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Be sure to install the entire suite.
 * Convert your private key in .ppk format using PuTTYgen:     
-  * Start PuTTYgen (for example, from the Start menu, click All Programs > PuTTY > PuTTYgen).
-  * Under Type of key to generate, select SSH-2 RSA.
-  * Click Load. By default, PuTTYgen displays only files with the extension .ppk. To locate your .pem file, select the option to display files of all types.
-  * Select your .pem file for the key pair that you specified when you launch your instance, and then click Open. Click OK to dismiss the confirmation dialog box.
-  * Click Save private key to save the key in the format that PuTTY can use. PuTTYgen displays a warning about saving the key without a passphrase. Click Yes.
-  _Note: A passphrase on a private key is an extra layer of protection, so even if your private key is discovered, it can't be used without the passphrase. The downside to using a passphrase is that it makes automation harder because human intervention is needed to log on to an instance, or copy files to an instance._
-  * Specify the same name for the key that you used for the key pair (for example, _my-key-pair_). PuTTY automatically adds the .ppk file extension. 
-  * Your private key is now in the correct format for use with PuTTY. 
+   * Start PuTTYgen (for example, from the Start menu, click All Programs > PuTTY > PuTTYgen).
+   * Under Type of key to generate, select SSH-2 RSA.
+   * Click Load. By default, PuTTYgen displays only files with the extension .ppk. To locate your .pem file, select the option to display files of all types.
+   * Select your .pem file for the key pair that you specified when you launch your instance, and then click Open. Click OK to dismiss the confirmation dialog box.
+   * Click Save private key to save the key in the format that PuTTY can use. PuTTYgen displays a warning about saving the key without a passphrase. Click Yes.
+   _Note: A passphrase on a private key is an extra layer of protection, so even if your private key is discovered, it can't be used without the passphrase. The downside to using a passphrase is that it makes automation harder because human intervention is needed to log on to an instance, or copy files to an instance._
+   * Specify the same name for the key that you used for the key pair (for example, _my-key-pair_). PuTTY automatically adds the .ppk file extension. 
+* Your private key is now in the correct format for use with PuTTY. 
 
 * You can now connect to your instance using PuTTY's SSH client.
-
-  * Start PuTTY (from the Start menu, click All Programs > PuTTY > PuTTY).
-  * In the Category pane, select Session and complete the following fields:
-   - In the Host Name box, enter "ubuntu@public_dns_name" . Replace public_dns_name with the public DNS for your     instance, which you can view by using the EC2 console (check the Public DNS column; if this column is hidden, click the Show/Hide icon and select Public DNS).
-   - Under Connection type, select SSH.
-   - Ensure that Port is 22.  
+   * Start PuTTY (from the Start menu, click All Programs > PuTTY > PuTTY).
+   * In the Category pane, select Session and complete the following fields:
+      - In the Host Name box, enter "ubuntu@public_dns_name" . Replace public_dns_name with the public DNS for your instance, which you can view by using the EC2 console (check the Public DNS column; if this column is hidden, click the Show/Hide icon and select Public DNS).
+     - Under Connection type, select SSH.
+     - Ensure that Port is 22.  
 * Now you have to link your session to the private key you previously created
-  * In the Category pane, expand Connection, expand SSH, and then select Auth.
-  * Click Browse.
-  * Select the .ppk file that you generated for your key pair, and then click Open.
-  * (Optional) If you plan to start this session again later, you can save the session information for future use. Select Session in the Category tree, enter a name for the session in Saved Sessions, and then click Save.
-  * Click Open to start the PuTTY session.
+   * In the Category pane, expand Connection, expand SSH, and then select Auth.
+   * Click Browse.
+   * Select the .ppk file that you generated for your key pair, and then click Open.
+   * (Optional) If you plan to start this session again later, you can save the session information for future use. Select Session in the Category tree, enter a name for the session in Saved Sessions, and then click Save.
+   * Click Open to start the PuTTY session.
 * If this is the first time you have connected to this instance, PuTTY displays a security alert dialog box that asks whether you trust the host you are connecting to.
 * Click Yes. A window opens and you are connected to your instance.
 
 _Note: If you specified a passphrase when you converted your private key to PuTTY's format, you must provide that passphrase when you log in to the instance._ 
 
 _Note 2: if these steps don’t work the first time, quit PuTTY and do it again. Click [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) for troubleshooting_
-
-
 
 ##Part 2 - Installing Ethereum on your instance and start mining
 
@@ -168,21 +164,25 @@ Ethereum client comes in 3 implementations. One written in [Go language](https:/
 At the moment, the only implementation supporting GPU mining is the [C++ implementation](https://github.com/ethereum/cpp-ethereum). However, the live testnet is running on the Go implementation (oh dear...). So you will need the Go implementation to read, synchronize the chain and credit Ether on your account, but the C++ miner to have GPU support. 
 Anyway...
 
-###Step 1 - Build Go-Ethereum client from source 
+###Step 1 - Build the Go-Ethereum command line client (geth) from source 
 
-* According to the guide [here](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu#building-from-source) we need to copy these lines to build the client:
-```
-sudo apt-get install software-properties-common
-sudo add-apt-repository -y ppa:ethereum/ethereum-qt
-sudo add-apt-repository -y ppa:ethereum/ethereum
-sudo add-apt-repository -y ppa:ethereum/ethereum-dev
-sudo apt-get update
-sudo apt-get install ethereum
-```
-Copy/ paste and hit ENTER on your keyboard, one line at a time
-
-
-
+* Clone the repository to a directory of your choosing by typing: 
+   ```
+   git clone https://github.com/ethereum/go-ethereum
+   ```
+* Building geth requires some external libraries to be installed. Type: 
+    ```
+    sudo apt-get install -y build-essential libgmp3-dev golang
+    ```
+* Finally, build the geth program using the following command.
+    ```
+    cd go-ethereum
+    make geth
+    ```
+* Run geth and leave it to catch up on the chain: 
+    ```
+    ~/go-ethereum/build/bin/geth  #or replace "~/" with your directory (e.g. "~/mypc/documents/go-ethereum")
+    ```
 
 ###Step 2 - Install the C++ miner (ethminer)
 
