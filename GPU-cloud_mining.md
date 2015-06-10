@@ -243,10 +243,6 @@ ethminer -M -G --opencl-device 3
 ```
 
 
-[ERROR, I get "> ethminer -M -G --opencl-device 0
-(anonymous): Line 1:18 Unexpected identifier (and 1 more errors)
-" and the "automatic thing" starts again]
-
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
 * Pheeww
 
