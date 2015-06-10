@@ -231,7 +231,8 @@ You will see terminal outputting lines like this:
 These are all the “blocks” of the blockchain you are downloading to your machine to be in sync.
 You need to wait few hours to complete. How do you know when it has finished downloading?
 Easy: instead of downloading 256 blocks at a time, you will start acquiring  1 block at a time.
-That's the signal, and now you can ctrl+c (??????) to exit Geth 
+That's the signal!
+*now you can ctrl+c  to exit Geth 
 
 ##Backing up your chain and keys
 to do
@@ -259,6 +260,13 @@ ethminer -M -G --opencl-device 3
 
 
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
+
+[OPENCL]:Found suitable OpenCL device [GRID K520] with 4294770688 bytes of GPU memory
+Benchmarking on platform: { "platform": "NVIDIA CUDA", "device": "GRID K520", "version": "OpenCL 1.1 CUDA" }
+Preparing DAG...
+DAG  13:47:23|ethminer  Generating DAG file. Progress: 0 %
+
+
 * Pheeww
 
 PICTURE HERE
