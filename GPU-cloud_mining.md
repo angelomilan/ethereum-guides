@@ -1,5 +1,6 @@
 # Ethereum cloud mining for dummies
 
+![who wants to learn about ethereum uh](https://github.com/angelomilan/ethereum-guides/blob/master/images/250.gif)
 LET THE ETHEREUM FORUM GUYS NOW WHEN COMPLETE
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
@@ -28,12 +29,22 @@ The tutorial is divided in two parts. In the first, we are going to create an Ub
 
 First things first: get an AWS account [here](http://aws.amazon.com).
 
+
+
 Amazon Web Services (AWS) is a cloud computing service provided by Amazon, the well known e-commerce giant. 
+
+Click on the top-right button:
+![create an aws account](https://github.com/angelomilan/ethereum-guides/blob/master/images/gpu-cloud-mining/1-create-aws-account__top-right-button.png)
 
 As you can see, the registration process is very handy, since you can sign-in with your existing Amazon account.
 You may notice that AWS offers the EC2 service free for 750 hrs/month, for 12 months. However, that is for the Linux _t2.micro instance_. That is good for testing, but not for mining Ethereum. I will tell you later what instance to select to maximize the GPU power.
 
-Once you have registered on [AWS](http://aws.amazon.com), you will be presented with a big list of the services offered by Amazon. Click on **EC2** (stands for, Elastic Compute Cloud), that will give you GPU horsepower for mining the Ethereum blockchain.
+Once you have registered on [AWS](http://aws.amazon.com), you will be presented with a big list of the services offered by Amazon. 
+
+
+![amazon web services ec2](https://github.com/angelomilan/ethereum-guides/blob/master/images/gpu-cloud-mining/2-amazon-web-services_offered-by-amazon.jpeg)
+
+Click on **EC2** (stands for, Elastic Compute Cloud), that will give you GPU horsepower for mining the Ethereum blockchain.
 
 ###Step 2 - Setup the pre-built Amazon Machine Image (AMI) on Amazon AWS EC2
 
@@ -85,6 +96,8 @@ _Note: At this point, if you want you can play with the **t2.micro free** instan
 
 You will now be prompted to create your access key aka “Key pair”. To use a virtual machine we first need an access key (keep it private!). Amazon AWS access keys consist of a public key and a private key.
 
+![key pair aws](https://github.com/angelomilan/ethereum-guides/blob/master/images/gpu-cloud-mining/6-key-pairs_aws-cloud.png)
+
 * Scroll the dropdown menu to **“Create new key pair”**
 * Type a name for the access key
 * A **_.pem_** file will be automatically downloaded to your local machine, this is your private key.
@@ -95,6 +108,8 @@ You will now be prompted to create your access key aka “Key pair”. To use a 
 Your instance should be pre-selected. Wait about 5 minutes for the Initializing process. Then click connect. 
 
 ###Step 5 - Connect your machine
+
+![connect to instance](https://github.com/angelomilan/ethereum-guides/blob/master/images/gpu-cloud-mining/7-connect-to-instance_connecting-aws.jpeg)
 
 **On your Mac:**
 
@@ -245,6 +260,9 @@ ethminer -M -G --opencl-device 3
 
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
 * Pheeww
+
+PICTURE HERE
+
 
 _Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
