@@ -208,13 +208,13 @@ On the current testnet, you will need to wait a few hours for this process to be
 * You will know that **geth** has finishing catching up with (i.e. downloading) the blockchain when instead of importing - say - 256 blocks at a time 
 
 ```
-("imported 256 block(s) (0 queued 0 ignored) in 449.34258ms.")
+Imported 256 block(s) (0 queued 0 ignored) in 449.34258ms #block_number.
 ```
 
-...it will start importing only 1 block at a time 
+...it will start importing only 1 block at a time...
 
 ```
-(“imported 1 block(s) (0 queued 0 ignored) in 3.2345ms.")
+Imported 1 block(s) (0 queued 0 ignored) in 3.2345ms #block_number.
 ```
 
 Also, you can see what is the current block of the testnet by viewing the [Testnet stats dashboard](https://stats.ethdev.com/) under the heading **Best Block**. 
@@ -265,17 +265,17 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
       6.5
       ```
 
-* For more information on accounts and user interaction with accounts visit the [Go-ethereum Wiki - Managing Your Accounts](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts)
+* For more information on accounts and user interaction with accounts visit the Go-ethereum Wiki - [Managing Your Accounts](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts)
 
 ### Step 5 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
 
-* Start again **geth** with RPC (remote procedure call) enabled: 
+* Start again **geth with RPC (remote procedure call) enabled**: 
 
       ```
       ~/go-ethereum/build/bin/geth --rpc console
       ```
 
-* In another window terminal, start ethminer: 
+* In another window terminal, start **ethminer**: 
       ```
       ethminer -M -G --opencl-device 0
       ```
@@ -288,7 +288,7 @@ So, you will need to start ethminer 3 more times with these commands:
       ethminer -M -G --opencl-device 2
       ethminer -M -G --opencl-device 3
 
-* Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
+* **Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.**
 
 [OPENCL]:Found suitable OpenCL device [GRID K520] with 4294770688 bytes of GPU memory
 Benchmarking on platform: { "platform": "NVIDIA CUDA", "device": "GRID K520", "version": "OpenCL 1.1 CUDA" }
@@ -329,7 +329,6 @@ _Note, if you encounter any issue or bug on this part 2 of the guide, please see
 **A**: You should know that your new cloud machine is always working and was already "logged in". (Unless you terminate the instance)
 
 Next time you want to connect to your instance with Terminal and check things, you just need to type these lines:
-
       ```
       ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
       ```
@@ -375,10 +374,10 @@ If you liked this tutorial and:
 
 reach us on twitter or on the ethereum official forum @angelomilan, @terzim
  
-Upcoming tutorials:
-How to cloud mine from your android device
-How to monitor your aws instance from your iPhone or Android
-What is exactly ethereum?
+Upcoming tutorials:  
+How to cloud mine from your android device  
+How to monitor your AWS instance from your iPhone or Android  
+What exactly is ethereum?  
 
 ### References:
 * http://ethereum.gitbooks.io/frontier-guide/content/gpu.html
