@@ -4,10 +4,12 @@ On your android device:
 * Download and launch Juice SSH app
 *On Windows
 download putty
+
+
+### Billing and cost management
 How much will you pay to run AWS GPU instance?
 
-On Windows
-Download putty
+
 
 A note on spot instances (this was entirely and temporanely (?) copied... I need to go deeper and rewrite it
 
