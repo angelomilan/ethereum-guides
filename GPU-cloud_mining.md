@@ -198,10 +198,21 @@ What's this account, and why you need it? [Is this the "wallet"?]
 * So, once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new```  or simply ```geth account new``` (you can view if that was successful with ```geth account list```). 
 * The system will ask for a 'Passphrase" aka a password. To generate a complex password use thise tool called Last Pass http://lastpass.com and save it to your notepad.
 * You will be given an Address. Back it up in a notepad. 
-* Run the client and let it catch up with the "test-chain" You can now type ```geth```  and wait until the client finishes catching up on the blockchain. . 
-Type:
-```geth``` or 
-```~/go-ethereum/build/bin/geth```  and hit ENTER.
+* Run the client and let it catch up with the "test-chain" You can now type ```geth``` hit ENTER  and wait until the client finishes catching up on the blockchain.
+* You will see “Block synchronization started”
+Wait for geth to catchup with the block chain.
+What  does it mean?
+You need to “download” the full blockchain to your cloud machine before you can start mining.
+That’s why I told you to get at 20+ GB of space.
+
+You will see terminal outputting lines like this:
+ “imported 256 block(s) (0 queued 0 ignored) in 449.34258ms. “
+
+These are all the “blocks” of the blockchain you are downloading to your machine to be in sync.
+You need to wait few hours to complete.
+
+
+
 * Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
 * start ethminer: ```ethminer -M -G --opencl-device 0```
 
@@ -234,7 +245,20 @@ You don't even need to login, as you may expect. You must remember that your new
 ** How can I benchmark my instance aka check hasharate?
 benchmark ethminer to check that your system is in order: 
 ```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
+
+
+**Ethereum blockchain sync: how long does it take to download the full blockchain?
+
+You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
+
+
+**How can I check that the work my Instance has done went to my address? In other words, how can I check my Ether balance?
+
+
 **What if I quit Terminal and turn off my local computer?**
+
+
+
 Does the instance stop to work?
 
 
