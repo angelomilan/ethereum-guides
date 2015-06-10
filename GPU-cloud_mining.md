@@ -1,7 +1,7 @@
 # Ethereum cloud mining for dummies
 
 ![who wants to learn about ethereum uh](https://github.com/angelomilan/ethereum-guides/blob/master/images/250.gif)
-LET THE ETHEREUM FORUM GUYS NOW WHEN COMPLETE
+LET THE ETHEREUM FORUM GUYS KNOW WHEN COMPLETE
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
