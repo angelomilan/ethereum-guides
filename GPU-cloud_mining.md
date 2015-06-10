@@ -198,7 +198,10 @@ What's this account, and why you need it? [Is this the "wallet"?]
 * So, once **geth** has finished catching up on the blockchain, generate a new account: ```~/go-ethereum/build/bin/geth account new```  or simply ```geth account new``` (you can view if that was successful with ```geth account list```). 
 * The system will ask for a 'Passphrase" aka a password. To generate a complex password use thise tool called Last Pass http://lastpass.com and save it to your notepad.
 * You will be given an Address. Back it up in a notepad. 
-* Run the client and let it catch up with the "test-chain" You can now type ```geth``` hit ENTER  and wait until the client finishes catching up on the blockchain.
+
+### Step 5 Ethereum Blockchain sync
+
+* Run the client and let it catch up with the "test-chain" typing ```geth``` then hit ENTER  and wait until the client finishes catching up on the blockchain.
 * You will see “Block synchronization started”
 Wait for geth to catchup with the block chain.
 What  does it mean?
@@ -211,7 +214,7 @@ You will see terminal outputting lines like this:
 These are all the “blocks” of the blockchain you are downloading to your machine to be in sync.
 You need to wait few hours to complete.
 
-
+### Step 6 Start Ethminer (finally!)
 
 * Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
 * start ethminer: ```ethminer -M -G --opencl-device 0```
@@ -230,10 +233,7 @@ ethminer -M -G --opencl-device 3
 _Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
 
-Next time you want to connect to your instance and check things, you just need to type these lines:
-```ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP```
-(You don't need to re-install the client and the miner every time.)
-You don't even need to login, as you may expect. You must remember that your new cloud machine is always working and was already "logged in".
+
 * Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
 * start ethminer: ```ethminer -M -G --opencl-device 0```
 
@@ -259,11 +259,16 @@ You have to wait few hours, depending on the instance of your choice (one or 4 c
 
 
 
-Does the instance stop to work?
+**Does I need to leave my computer always on, can I close Terminal?
+You should know that your new cloud machine is always working and was already "logged in". (Unless you terminate the instance)
+Next time you want to connect to your instance with Terminal and check things, you just need to type these lines:
+```ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP```
+(You don't need to re-install the client and the miner every time.)
+You don't even need to login, as you may expect. 
 
 
 
-###Step 6 (Optional) - Stopping or Terminating your instance
+##Stopping or Terminating your instance
 
 Once you are done with your mining you have two choices: 
 
@@ -281,6 +286,8 @@ Once you are done with your mining you have two choices:
   * In the navigation pane, click Instances.
   * Select the instance, click Actions, select Instance State, and then click Terminate.
   * Click Yes, Terminate when prompted for confirmation.
+  * 
+  
 
 **_Thanks to paul_bxd of the ethereum forum who initiated me to cloud mining with Ethereum and AWS EC2. Without his help and resources a wouldn’t be able to put this guide together._**
 
@@ -290,11 +297,17 @@ A special announcement by @paul_bxd
 ```
 Now we are offering free space to host a server you buy. We can provide free power, internet and cooling. We ask for a % of the Ether you successfully mine. Is this of interest to you?
 ```
+**Contacts
+If you liked this tutorial and:
+* need help
+* want new Ethereum"for dummies" tutorials
+* want to contribute
 
-If you liked this post and want to see the next one reach me on @angelomilan on twitter and tell me you want it.
+reach me on twitter or on the ethereum official forum @angelomilan
  
 Upcoming tutorials:
 How to cloud mine from your android device
+How to monitor your aws instance from your iPhone or Android
 What the f**k is ethereum?
 
 ### References:
