@@ -4,6 +4,8 @@ LET THE ETHEREUM FORUM GUYS NOW WHEN COMPLETE
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
+Warning: this has been tested on the test-net. You won't be able to mine "real" ether until Frontier is release. You can check frontier status here: https://github.com/ethereum/go-ethereum/milestones
+
 This step by step tutorial tries to be easy to follow. It is supposed to be as easy as copy / pasting but we acknowledge that a certain level of understanding and patience to follow the detailed instructions is needed. 
 
 Even if you lack of patience, try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim.
@@ -212,34 +214,46 @@ You will see terminal outputting lines like this:
  “imported 256 block(s) (0 queued 0 ignored) in 449.34258ms. “
 
 These are all the “blocks” of the blockchain you are downloading to your machine to be in sync.
-You need to wait few hours to complete.
+You need to wait few hours to complete. How do you know when it has finished downloading?
+Easy: instead of downloading 256 blocks at a time, you will start acquiring  1 block at a time.
+That's the signal, and now you can ctrl+c (??????) to exit Geth 
+
+##Backing up your chain and keys
+to do
+
+public key: address
+private key: passphrase
+
+right?
+
+" If you lose your keys, you lose access to the account and its ether balance, permanently. Private keys cannot be generated from public ones (obviously) and the password you're asked for when creating the account is just a means to encrypt the private key, not regenerate it."
 
 ### Step 6 Start Ethminer (finally!)
 
 * Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
 * start ethminer: ```ethminer -M -G --opencl-device 0```
 
-_Note: if you're using the larger g2 instance with 4 GPUs [which is the 2.8?] you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ [what the f**ck? explain, step by step]
+_Note: if you're using the larger g2 instance with 4 GPUs (the 2.8) you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ 
+So, you will need to start ethiminer 3 more times with these commands:
 
 ```
 ethminer -M -G --opencl-device 1
 ethminer -M -G --opencl-device 2
 ethminer -M -G --opencl-device 3
 ```
-[correct?]
+
+
+[ERROR, I get "> ethminer -M -G --opencl-device 0
+(anonymous): Line 1:18 Unexpected identifier (and 1 more errors)
+" and the "automatic thing" starts again]
 
 * Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.
+* Pheeww
 
 _Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
 
 
-* Start again **geth** with RPC (remote procedure call) enabled: ```~/go-ethereum/build/bin/geth --rpc console``` or simply ```geth --rpc console```
-* start ethminer: ```ethminer -M -G --opencl-device 0```
-
-[ERROR, I get "> ethminer -M -G --opencl-device 0
-(anonymous): Line 1:18 Unexpected identifier (and 1 more errors)
-" and the "automatic thing" starts again]
 
 ## Q&A
 ** How can I benchmark my instance aka check hasharate?
@@ -301,7 +315,7 @@ Now we are offering free space to host a server you buy. We can provide free pow
 If you liked this tutorial and:
 * need help
 * want new Ethereum"for dummies" tutorials
-* want to contribute
+* want to contribute with proof reading or for upcoming tutorials
 
 reach me on twitter or on the ethereum official forum @angelomilan
  
