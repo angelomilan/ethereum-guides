@@ -69,7 +69,7 @@ As we said in the intro, we need a GPU instance to mine Ethereum. If you scroll 
 
 _Note: At this point, if you want you can play with the **t2.micro free** instance before proceeding spending money._
 
-* Click on next and you will be redirected to **"configure instance details"** to access advanced settings for your instance. We suggest leaving everything as is, unless you feel extremely comfortable in what you are doing. A particularly interesting feature is the _"purchasing options"_: if you click on "request spot instances" you can specify the bid parameters for purchasing the computational power needed to launch your instance. 
+* Click on next and you will be redirected to **"configure instance details"** to access advanced settings for your instance. We suggest leaving everything as is, unless you feel extremely comfortable in what you are doing. A particularly interesting feature is the _"purchasing options"_: if you click on "request spot instances" you can specify the bid parameters for purchasing the computational power needed to launch your instance. Don't overlook this feature if you want to be in control of the instance costs. As Amazon suggests: You have the option to request Spot Instances and specify the maximum price you are willing to pay per instance hour. If you bid higher than the current Spot Price, your Spot Instance is launched and will be charged at the current Spot Price. Spot Prices often are significantly lower than On-Demand prices, so using Spot Instances for flexible, interruption-tolerant applications can lower your instance costs by up to 90%. Learn more about Spot Instances.https://docs.aws.amazon.com/console/ec2/spot-instances. I want to highligth this: IF YOU ARE INTERRUPTION-TOLERANT
 
 * Click on next and you will be redirected to the **"add storage"** screen. As discussed in the previous step, we would need to use at least 8 GB, with 20+ GB recommended. Do not edit these settings unless you are comfortable about what you are doing.
 
@@ -90,7 +90,7 @@ You will now be prompted to create your access key aka “Key pair”. To use a 
 * Then click **“Launch Instances”**
 * All right, now on “View instances”
 
-Your instance should be pre-selected. Click connect. Connecting to your Linux instance on AWS. 
+Your instance should be pre-selected. Wait about 5 minutes for the Initializing process. Then click connect. 
 
 ###Step 5 - Connect your machine
 
