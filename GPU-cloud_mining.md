@@ -267,6 +267,17 @@ Preparing DAG...
 DAG  13:47:23|ethminer  Generating DAG file. Progress: 0 %
 
 
+In case you see this error:
+Trial 2... 6029312
+Trial 3... 6116693
+Trial 4... 6029312
+Trial 5... 6116693
+min/mean/max: 5941930/6046788/6116693 H/s
+inner mean: 4048668 H/s
+Phoning home to find world ranking...
+Error phoning home. ET is sad.
+
+
 * Pheeww
 
 PICTURE HERE
