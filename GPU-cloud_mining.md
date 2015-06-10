@@ -180,10 +180,9 @@ sudo apt-get install cpp-ethereum
 
 _Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_
 
-* Once installed, benchmark ethminer to check that your system is in order: 
-```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
 
-_Note: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
+
+_Note 2: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
 
 
 
@@ -232,8 +231,12 @@ You don't even need to login, as you may expect. You must remember that your new
 " and the "automatic thing" starts again]
 
 ## Q&A
+** How can I benchmark my instance aka check hasharate?
+benchmark ethminer to check that your system is in order: 
+```ethminer -G -M # (should give you your current hashrate, roughly 6MH/s)```
 **What if I quit Terminal and turn off my local computer?**
 Does the instance stop to work?
+
 
 
 ###Step 6 (Optional) - Stopping or Terminating your instance
