@@ -312,9 +312,9 @@ _Note, if you encounter any issue or bug on this part 2 of the guide, please see
 
 Next time you want to connect to your instance with Terminal and check things, you just need to type these lines:
 
-      ```
-      ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
-      ```
+```
+ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
+```
 
 (You don't need to re-install the client and the miner every time.)
 You don't even need to login, as you may expect. 
