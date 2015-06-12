@@ -76,7 +76,7 @@ Now we need to customize the instance to make sure we are doing things right.
 
 As we said in the intro, we need a GPU instance to mine Ethereum. If you scroll down the list you will see 2 GPU instances.
 
-* We will go for the **g2.2xlarge** (if you skip this step, you will not have an nvidia device)
+* We will go for the **g2.2xlarge** or **g2.8xlarge** (if you skip this step, you will not have an nvidia device)
 * Just click on the empty box on the left to choose the instance
 
 _Note: At this point, if you want you can play with the **t2.micro free** instance before proceeding spending money._
@@ -238,6 +238,12 @@ sudo apt-get install cpp-ethereum
 
 _Note 2: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
 
+* Benchmark ethminer to check that your system is in order: (should give you your current hashrate, roughly 6MH/s)
+
+```
+ethminer -G -M 
+```
+
 ###Step 4 - Create a new account on geth
 
 So, once **geth** has finished its synchronisation with the blockchain, you have to **generate a new account**. This will be your "wallet", which will store the ether you mine. **_Your wallet will be stored in the hidden folder ~/.ethereum (in the /keystore subfolder). In the same folder you will find the files of the blockchain._**
@@ -254,13 +260,13 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
 
 * You can view if the account generation was successful with 
       ```
-      geth account list
+      ~/go-ethereum/build/bin/geth account list
       ``` 
 
 * At any time to check your Ether balance:
 
       ```
-      geth console
+      ~/go-ethereum/build/bin/geth console
       > web3.fromWei(eth.getBalance(eth.coinbase), "ether")
       6.5
       ```
@@ -277,37 +283,18 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
 
 * In another window terminal, start **ethminer**: 
       ```
-      ethminer -M -G --opencl-device 0
+      ethminer -G --opencl-device 0
       ```
 
 _Note: if you're using the larger g2 instance with 4 GPUs (the 2.8) you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ 
 
 So, you will need to start ethminer 3 more times with these commands:
 
-      ethminer -M -G --opencl-device 1
-      ethminer -M -G --opencl-device 2
-      ethminer -M -G --opencl-device 3
+      ethminer -G --opencl-device 1
+      ethminer -G --opencl-device 2
+      ethminer -G --opencl-device 3
 
 * **Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.**
-
-[OPENCL]:Found suitable OpenCL device [GRID K520] with 4294770688 bytes of GPU memory
-Benchmarking on platform: { "platform": "NVIDIA CUDA", "device": "GRID K520", "version": "OpenCL 1.1 CUDA" }
-Preparing DAG...
-DAG  13:47:23|ethminer  Generating DAG file. Progress: 0 %
-
-
-In case you see this error:
-Trial 2... 6029312
-Trial 3... 6116693
-Trial 4... 6029312
-Trial 5... 6116693
-min/mean/max: 5941930/6046788/6116693 H/s
-inner mean: 4048668 H/s
-Phoning home to find world ranking...
-Error phoning home. ET is sad.
-
-
-* Pheeww
 
 PICTURE HERE
 
@@ -315,11 +302,6 @@ PICTURE HERE
 _Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
 ## Q&A
-
-**Q**: How can I benchmark my instance aka check hashrate?  
-**A**: benchmark ethminer to check that your system is in order:
-
-```ethminer -G -M     #(should give you your current hashrate, roughly 6MH/s)```
 
 **Q**: Ethereum blockchain sync: how long does it take to download the full blockchain?  
 **A**: You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
