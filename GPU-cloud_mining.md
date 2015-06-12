@@ -311,6 +311,7 @@ _Note, if you encounter any issue or bug on this part 2 of the guide, please see
 **A**: You should know that your new cloud machine is always working and was already "logged in". (Unless you terminate the instance)
 
 Next time you want to connect to your instance with Terminal and check things, you just need to type these lines:
+
       ```
       ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
       ```
