@@ -176,7 +176,14 @@ Anyway...
 
 ###Step 1 - Build geth (the Go-Ethereum command line client) from source
 
-* Clone the repository to a directory of your choosing by typing: 
+* First install **git** the popular version control systems. One of its function is to allow easy code download from the web. 
+
+   ```
+   sudo apt-get update
+   sudo apt-get install git
+   ```
+
+* Thereafter, clone the Go-Ethereum code repository to a directory of your choosing by typing: 
 
    ```
    git clone https://github.com/ethereum/go-ethereum
