@@ -174,38 +174,25 @@ Therefore, you will need the Go implementation to read, synchronize the chain an
 
 Anyway...
 
-###Step 1 - Build geth (the Go-Ethereum command line client) from source
+###Step 1 - Install geth (the Go-Ethereum command line client) 
 
-* First install **git** the popular version control systems. One of its function is to allow easy code download from the web. 
+* Run the following commands to install the latest developer version of go-ethereum
 
-   ```
-   sudo apt-get update
-   sudo apt-get install git
-   ```
-
-* Thereafter, clone the Go-Ethereum code repository to a directory of your choosing by typing: 
-
-   ```
-   git clone https://github.com/ethereum/go-ethereum
-   ```
-* Building geth requires some external libraries to be installed. Type: 
-
-    ```
-    sudo apt-get install -y build-essential libgmp3-dev golang
-    ```
-* Finally, build the geth program using the following command.
-
-    ```
-    cd go-ethereum
-    make geth
-    ```
+```
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum-qt
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo add-apt-repository -y ppa:ethereum/ethereum-dev
+sudo apt-get update
+sudo apt-get install ethereum
+```
 
 ###Step 2 - Use geth to download the blockchain
 
-* Run geth and leave it to download the blockchain. You will read “Block synchronization started”: 
+* Run geth and leave it to download the blockchain. You will read “Block synchronization started”. Run: 
 
     ```
-    ~/go-ethereum/build/bin/geth  # or replace "~/" with your directory (e.g. "~/mypc/documents/go-ethereum")
+    geth
     ```
 
 This command will **"download" the full blockchain to your cloud machine before you can start mining.** That is why we recommended to get at least 20+ GB of space!
@@ -224,7 +211,7 @@ Imported 256 block(s) (0 queued 0 ignored) in 449.34258ms #block_number.
 Imported 1 block(s) (0 queued 0 ignored) in 3.2345ms #block_number.
 ```
 
-Also, you can see what is the current block of the testnet by viewing the [Testnet stats dashboard](https://stats.ethdev.com/) under the heading **Best Block**. 
+Also, you can see what is the current block of the testnet by viewing the [Testnet stats dashboard](https://stats.ethdev.com/) under the heading **Best Block**. For example, if under Best Block you have 610,002 and you reach this number in the download process, then you have finished downloading the blockchain. 
 
 * Once this process is completed, you can type ctrl+c to **exit geth**
 
@@ -232,7 +219,14 @@ Also, you can see what is the current block of the testnet by viewing the [Testn
 
 * Install ethminer. Again, following the [cpp-ethereum dev PPAs guide]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit). 
 
-Let's do this:
+Let's do this, assuming you have done correctly Step 1 (i.e. you have already added the PPA repository):
+
+```
+sudo apt-get update
+sudo apt-get install cpp-ethereum 
+```
+
+* If you get an error because you have not added the PPA repositories, do: 
 
 ```
 sudo add-apt-repository -y ppa:ethereum/ethereum-qt
@@ -258,7 +252,7 @@ So, once **geth** has finished its synchronisation with the blockchain, you have
 * To generate a new account type:
 
       ```
-      ~/go-ethereum/build/bin/geth account new
+      geth account new
       ``` 
 
 * The system will ask for a 'Passphrase",  aka a password. After the password is inputted (twice), you will be given an Address. Back it up in a notepad. 
@@ -267,13 +261,13 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
 
 * You can view if the account generation was successful with 
       ```
-      ~/go-ethereum/build/bin/geth account list
+      geth account list
       ``` 
 
 * At any time to check your Ether balance:
 
       ```
-      ~/go-ethereum/build/bin/geth console
+      geth console
       > web3.fromWei(eth.getBalance(eth.coinbase), "ether")
       6.5
       ```
@@ -285,7 +279,7 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
 * Start again **geth with RPC (remote procedure call) enabled**: 
 
       ```
-      ~/go-ethereum/build/bin/geth --rpc console
+      geth --rpc console
       ```
 
 * In another window terminal, start **ethminer**: 
