@@ -4,7 +4,7 @@ LET THE ETHEREUM FORUM GUYS KNOW WHEN COMPLETE
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
-** Warning: this has been tested on the Frontier test-net. You won't be able to mine "real" ether until the "real" blockchain is released. You can [check Frontier status here](https://github.com/ethereum/go-ethereum/milestones) **
+** Warning: this has been tested on the Frontier test-net. You won't be able to mine "real" ether until the "real" blockchain is released. You can [check Frontier status here](https://github.com/ethereum/go-ethereum/milestones). A notice on costs: you are going to spend about 2.60 USD / hour for a g2.8 instance so keep this in mind, if you want to proceed **
 
 This step by step tutorial tries to be easy to follow. It is supposed to be as easy as copy / pasting but we acknowledge that a certain level of understanding and patience to follow the detailed instructions is needed. 
 
