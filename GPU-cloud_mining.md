@@ -18,7 +18,7 @@ I want to mine Ether, but I do not want to use my machine and I do not want to i
 Since GPU mining is set to be 100x more efficient than CPU with Ethereum, we need to look to renting GPU power on the cloud.
 The answer, apparently, is **Amazon Web services EC2**. 
 
-On [Ethereum forum](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores) @paul_bxd revealed an inner mean (hashrate?) of 24 MH/s using an AWS g2.8xlarge instance comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
+On [Ethereum forum](https://forum.ethereum.org/discussion/2134/gpu-mining-is-out-come-and-let-us-know-of-your-bench-scores) @paul_bxd revealed an inner mean (hashrate) of 24 MH/s using an AWS g2.8xlarge instance comparable to the benchmark of an AMD Radeon R9 280x : 23.2 MH/S which is the best in class for ethereum mining (Nvidia Geforce is far less efficient)
 
 The tutorial is divided in two parts. In the first, we are going to create an Ubuntu Linux virtual machine on Amazon Web Services (AWS) EC2 (Elastic Compute Cloud); in the second part, we are going to install Ethereum C++ miner on Ubuntu. 
 
@@ -343,9 +343,10 @@ Once you are done with your mining you have two choices:
 
 A special announcement by @paul_bxd
 
-```
-Now we are offering free space to host a server you buy. We can provide free power, internet and cooling. We ask for a % of the Ether you successfully mine. Is this of interest to you?
-```
+
+Now we are offering free space to host a server you buy. We can provide free power, internet and cooling. It's 2 x more powerful than the Large GPU instance on AWS, and since AWS is $2.60 per hour you will recoup your investment in just 22 days... and own a physical miner! We ask for a % of the Ether you successfully mine. If you are interested:
+ [Signup on Remoteminer](http://remoteminer.com)
+
 
 **Contacts
 
