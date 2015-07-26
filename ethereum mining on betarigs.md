@@ -13,3 +13,11 @@ This is supposed to be a step-by-step guide for dummies on Ethereum mining via B
 - What does "mining" mean, and what is the reward for it? 
 - What is a mining rig and why do we need one? 
 - What is Betarigs?
+
+At the final step of renting hashrate on Betarigs, you are usually asked to provide a mining   xxx. (Is this mandatory or just an option?)
+With ethereum, that can't be the case. Pool mining won't be available for a while.
+Quoting Stephan Tual:
+https://forum.ethereum.org/discussion/2233/ethereum-mining-pool
+Short block times and GHOST utilization mean that the optimal pool size is so small it's not worth setting one up, as superlinear gains cannot be achieved.
+
+It's unlikely that we'll see pools for a while, if at all.
