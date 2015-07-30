@@ -216,8 +216,9 @@ python mk_genesis_block.py --extradata 0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb
 Once you are satisfied with the generation of the Genesis block, you can load it into the clients using this command:
 
 ```
-./build/bin/geth --genesis genesis_block.json
+/home/ubuntu# geth --genesis /home/ubuntu/genesis_block.json
 ```
+This command works exclusively with the ubuntu instance we suggested.
 
 ###Step 3 - Use geth to download the blockchain
 
