@@ -1,6 +1,5 @@
 # ETHEREUM CLOUD MINING FOR DUMMIES
 
-LET THE ETHEREUM FORUM GUYS KNOW WHEN COMPLETE
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
