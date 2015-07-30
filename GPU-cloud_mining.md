@@ -192,7 +192,9 @@ Install curl and python. The latter should be already installed but run the comm
 
 ```
 sudo apt-get install curl
+sudo apt-get update
 sudo apt-get install python
+sudo apt-get update
 ```
 
 Download the python script that generates the Genesis file. It’s called ‘mk_genesis_block.py’ and can be downloaded running:
