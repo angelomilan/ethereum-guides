@@ -315,7 +315,7 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
       geth --rpc console
       ```
 
-* In another window terminal, start **ethminer**: 
+* In another window terminal (right click on the window terminal and select "_Duplicate session_"), start **ethminer**: 
       ```
       ethminer -G --opencl-device 0
       ```
