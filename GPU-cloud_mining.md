@@ -355,7 +355,9 @@ If you liked this tutorial and:
 * want to contribute with proof reading or for upcoming tutorials
 
 reach us on twitter or on the ethereum official forum @angelomilan, @terzim
+
  **NEW GUIDE:
+ 
 [Shut up and give me ETHER](https://medium.com/@angelomilan/shut-up-and-give-me-ether-guide-3313f57e252e) (how to get ether if you are late to the party)
 
  
