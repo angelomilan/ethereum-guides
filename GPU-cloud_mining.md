@@ -184,7 +184,42 @@ sudo apt-get update
 sudo apt-get install ethereum
 ```
 
-###Step 2 - Use geth to download the blockchain
+###Step 2 - Generate the Genesis block and load it to the client
+
+Install curl and python
+
+```
+sudo apt-get install curl
+sudo apt-get install python
+```
+
+Download the python script that generates the Genesis file. It’s called ‘mk_genesis_block.py’ and can be downloaded running:
+
+```
+curl -O https://raw.githubusercontent.com/ethereum/genesis_block_generator/master/mk_genesis_block.py
+```
+
+This will create the file in the same folder where you invoked the command. You now need to install the pybitcointools created by our very own Vitalik Buterin (Ethereum founder). You can obtain this through the python package manager pip, so we’ll install pip first, then the tools right afterwards.
+
+```
+curl -O https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+sudo pip install bitcoin
+```
+
+You will then be able to generate the Genesis block by running:
+
+```
+python mk_genesis_block.py --extradata 0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa > genesis_block.json
+```
+
+Once you are satisfied with the generation of the Genesis block, you can load it into the clients using this command:
+
+```
+./build/bin/geth --genesis genesis_block.json
+```
+
+###Step 3 - Use geth to download the blockchain
 
 * Run geth and leave it to download the blockchain. You will read “Block synchronization started”. Run: 
 
@@ -212,7 +247,7 @@ Also, you can see what is the current block of the testnet by viewing the [Testn
 
 * Once this process is completed, you can type ctrl+c to **exit geth**
 
-###Step 3 - Install the C++ miner (ethminer)
+###Step 4 - Install the C++ miner (ethminer)
 
 * Install ethminer. Again, following the [cpp-ethereum dev PPAs guide]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit). 
 
@@ -242,7 +277,7 @@ _Note 2: if you were just testing this guide with the free micro instance you 'v
 ethminer -G -M 
 ```
 
-###Step 4 - Create a new account on geth
+###Step 5 - Create a new account on geth
 
 So, once **geth** has finished its synchronisation with the blockchain, you have to **generate a new account**. This will be your "wallet", which will store the ether you mine. **_Your wallet will be stored in the hidden folder ~/.ethereum (in the /keystore subfolder). In the same folder you will find the files of the blockchain._**
 
@@ -271,7 +306,7 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
 
 * For more information on accounts and user interaction with accounts visit the Go-ethereum Wiki - [Managing Your Accounts](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts)
 
-### Step 5 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
+### Step 6 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
 
 * Start again **geth with RPC (remote procedure call) enabled**: 
 
@@ -317,7 +352,7 @@ ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
 (You don't need to re-install the client and the miner every time.)
 You don't even need to login, as you may expect. 
 
-###Step 5 - Stopping or Terminating your instance
+###Step 7 - Stopping or Terminating your instance
 
 Once you are done with your mining you have two choices: 
 
