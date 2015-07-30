@@ -184,6 +184,8 @@ sudo apt-get update
 sudo apt-get install ethereum
 ```
 
+e digitate "Y" per installare. 
+
 ###Step 2 - Generate the Genesis block and load it to the client
 
 Install curl and python. The latter should be already installed but run the command anyway just to be sure. 
