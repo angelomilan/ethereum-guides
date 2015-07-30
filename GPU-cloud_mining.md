@@ -3,11 +3,11 @@
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
-** Warning: this has been tested on the Frontier test-net. You won't be able to mine "real" ether until the "real" blockchain is released. You can [check Frontier status here](https://github.com/ethereum/go-ethereum/milestones). A notice on costs: you are going to spend about 2.60 USD / hour for a g2.8 instance so keep this in mind, if you want to proceed **
+** Warning: this has been tested on the Frontier test-net and it is undergoing testing on the Frontier live-net, which has just been launched. A notice on costs: you are going to spend about 2.60 USD / hour for a g2.8 instance so keep this in mind, if you want to proceed **
 
 This step by step tutorial tries to be easy to follow. It is supposed to be as easy as copy / pasting but we acknowledge that a certain level of understanding and patience to follow the detailed instructions is needed. 
 
-Even if you lack of patience, try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim.
+Even if you lack of patience, try to understand step by step what you are doing. If you do not, it does not really matter as long as you follow the instructions properly. If you have any questions, please contact @angelomilan or @terzim (github.com/terzim).
 
 ## PROBLEM
 I want to mine Ether, but I do not want to use my machine and I do not want to invest on new hardware and pay thousand dollar electricity bills.
@@ -80,7 +80,7 @@ _Note: At this point, if you want you can play with the **t2.micro free** instan
 
 * Click on "next" and you will be redirected to **"configure instance details"** to access advanced settings for your instance. We suggest leaving everything as is, unless you feel extremely comfortable in what you are doing. A particularly interesting feature is the _"purchasing options"_: if you click on "request spot instances" you can specify the bid parameters for purchasing the computational power needed to launch your instance. Don't overlook this feature if you want to be in control of the instance costs. As Amazon suggests: you have the option to request Spot Instances and specify the maximum price you are willing to pay per instance hour. If you bid higher than the current Spot Price, your Spot Instance is launched and will be charged at the current Spot Price. Spot Prices often are significantly lower than On-Demand prices, so using Spot Instances for flexible, interruption-tolerant applications can lower your instance costs by up to 90%. Learn more about Spot Instances: https://docs.aws.amazon.com/console/ec2/spot-instances. We want to highligth this: IF YOU ARE INTERRUPTION-TOLERANT!  
 
-* Click on "next" and you will be redirected to the **"add storage"** screen. As discussed in the previous step, we would need to use at least 8 GB, with 20+ GB recommended. Do not edit these settings unless you are comfortable about what you are doing.  
+* Click on "next" and you will be redirected to the **"add storage"** screen. We recommend to use at least 20+ GB. Otherwise you will run out of space pretty soon! :) In any case, just do not edit these settings unless you are comfortable about what you are doing. (ask the guide creators)
 
 * Click on "next" and you will be redirected to the **"tag instance"** screen. We recommend not to edit these settings.  
 
