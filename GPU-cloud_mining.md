@@ -226,7 +226,9 @@ Once you are satisfied with the generation of the Genesis block, you can load it
 ```
 geth --genesis /home/ubuntu/genesis_block.json
 ```
-This command works exclusively with the ubuntu instance we suggested. At the same time, this command will **"download" the full blockchain to your cloud machine before you can start mining.** That is why we recommended to get at least 20+ GB of space!
+This command works exclusively with the ubuntu instance we suggested. You will need to say "y" to the Ethereum agreement. 
+
+This command will also **"download" the full blockchain to your cloud machine before you can start mining.** That is why we recommended to get at least 20+ GB of space!
 
 Depending on how far we went into the livenet, this could take several hours (or even a full day!). Be patient :)
 
