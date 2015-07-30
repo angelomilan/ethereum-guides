@@ -217,26 +217,18 @@ You will then be able to generate the Genesis block by running:
 python mk_genesis_block.py --extradata 0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa > genesis_block.json
 ```
 
-The block will start going through and processing the transactions. These are the transactions that took place in the Ether pre-sale during 2014. How cool is that? 
+The block will start fetching, processing and validating the transactions. These are the transactions that took place in the Ether pre-sale during 2014. How cool is that? 
+
+###Step 3 - Use geth to download the blockchain
 
 Once you are satisfied with the generation of the Genesis block, you can load it into the clients using this command:
 
 ```
 geth --genesis /home/ubuntu/genesis_block.json
 ```
-This command works exclusively with the ubuntu instance we suggested.
+This command works exclusively with the ubuntu instance we suggested. At the same time, this command will **"download" the full blockchain to your cloud machine before you can start mining.** That is why we recommended to get at least 20+ GB of space!
 
-###Step 3 - Use geth to download the blockchain
-
-* Run geth and leave it to download the blockchain. You will read “Block synchronization started”. Run: 
-
-    ```
-    geth
-    ```
-
-This command will **"download" the full blockchain to your cloud machine before you can start mining.** That is why we recommended to get at least 20+ GB of space!
-
-On the current testnet, you will need to wait a few hours for this process to be completed.
+Depending on how far we went into the livenet, this could take several hours (or even a full day!). Be patient :)
 
 * You will know that **geth** has finishing catching up with (i.e. downloading) the blockchain when instead of importing - say - 256 blocks at a time 
 
@@ -290,26 +282,26 @@ So, once **geth** has finished its synchronisation with the blockchain, you have
 
 * To generate a new account type:
 
-      ```
-      geth account new
-      ``` 
+```
+geth account new
+``` 
 
 * The system will ask for a 'Passphrase",  aka a password. After the password is inputted (twice), you will be given an Address. Back it up in a notepad. 
 
 _Note: If you lose your keys, you lose access to the account and its ether balance, permanently. Private keys cannot be generated from public ones (obviously) and the password you're asked for when creating the account is just a means to encrypt the private key, not regenerate it. Therefore, remember your password!!!!_
 
 * You can view if the account generation was successful with 
-      ```
-      geth account list
-      ``` 
+```
+geth account list
+``` 
 
 * At any time to check your Ether balance:
 
-      ```
-      geth console
-      > web3.fromWei(eth.getBalance(eth.coinbase), "ether")
-      6.5
-      ```
+```
+geth console
+> web3.fromWei(eth.getBalance(eth.coinbase), "ether")
+6.5
+```
 
 * For more information on accounts and user interaction with accounts visit the Go-ethereum Wiki - [Managing Your Accounts](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts)
 
@@ -317,22 +309,23 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
 
 * Start again **geth with RPC (remote procedure call) enabled**: 
 
-      ```
-      geth --rpc console
-      ```
+```
+geth --rpc console
+```
 
 * In another window terminal (right click on the window terminal and select "_Duplicate session_", if you are using PuTTY for WIndows, if you are using MAC [xxxxx]), start **ethminer**: 
-      ```
-      ethminer -G --opencl-device 0
-      ```
+```
+ethminer -G --opencl-device 0
+```
 
 _Note: if you're using the larger g2 instance with 4 GPUs (the 2.8) you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ 
 
 So, you will need to start ethminer 3 more times with these commands:
-
-      ethminer -G --opencl-device 1
-      ethminer -G --opencl-device 2
-      ethminer -G --opencl-device 3
+```
+ethminer -G --opencl-device 1
+ethminer -G --opencl-device 2
+ethminer -G --opencl-device 3
+```
 
 * **Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.**
 
