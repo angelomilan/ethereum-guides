@@ -3,7 +3,7 @@
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
-** Warning: this has been tested on the Frontier test-net and it is undergoing testing on the Frontier live-net, which has just been launched. A notice on costs: you are going to spend about 2.60 USD / hour for a g2.8 instance so keep this in mind, if you want to proceed **
+** Warning: this has been tested on the Frontier test-net and has just recently undergone testing on the Frontier live-net, which has just been launched. A notice on costs: you are going to spend about 2.60 USD / hour for a g2.8 instance so keep this in mind, if you want to proceed **
 
 This step by step tutorial tries to be easy to follow. It is supposed to be as easy as copy / pasting but we acknowledge that a certain level of understanding and patience to follow the detailed instructions is needed. 
 
@@ -184,7 +184,7 @@ sudo apt-get update
 sudo apt-get install ethereum
 ```
 
-e digitate "Y" per installare. 
+and type "Y" to install. 
 
 ###Step 2 - Generate the Genesis block and load it to the client
 
@@ -244,7 +244,7 @@ Imported 256 block(s) (0 queued 0 ignored) in 449.34258ms #block_number.
 Imported 1 block(s) (0 queued 0 ignored) in 3.2345ms #block_number.
 ```
 
-Also, you can see what is the current block of the testnet by viewing the [Testnet stats dashboard](https://stats.ethdev.com/) under the heading **Best Block**. For example, if under Best Block you have 610,002 and you reach this number in the download process, then you have finished downloading the blockchain. 
+Also, you can see what is the current block of the livenet by viewing the [Ethereum net stats dashboard](https://stats.ethdev.com/) under the heading **Best Block**. For example, if under Best Block you have 610,002 and you reach this number in the download process, then you have finished downloading the blockchain. 
 
 * Once this process is completed, you can type ctrl+c to **exit geth**
 
@@ -270,7 +270,7 @@ sudo apt-get install cpp-ethereum
 
 **_Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_**
 
-_Note 2: if you were just testing this guide with the free micro instance you 've now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
+_Note 2: if you were just testing this guide with the free micro instance you have now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
 
 * Benchmark ethminer to check that your system is in order: (should give you your current hashrate, roughly 6MH/s)
 
