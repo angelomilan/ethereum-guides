@@ -186,7 +186,7 @@ sudo apt-get install ethereum
 
 ###Step 2 - Generate the Genesis block and load it to the client
 
-Install curl and python
+Install curl and python. The latter should be already installed but run the command anyway just to be sure. 
 
 ```
 sudo apt-get install curl
@@ -199,7 +199,7 @@ Download the python script that generates the Genesis file. It’s called ‘mk_
 curl -O https://raw.githubusercontent.com/ethereum/genesis_block_generator/master/mk_genesis_block.py
 ```
 
-This will create the file in the same folder where you invoked the command. You now need to install the pybitcointools created by our very own Vitalik Buterin (Ethereum founder). You can obtain this through the python package manager pip, so we’ll install pip first, then the tools right afterwards.
+This will create the file in the same folder where you invoked the command. You now need to install the pybitcointools created by the very own Vitalik Buterin (Ethereum founder). You can obtain this through the python package manager pip, so we’ll install pip first, then the tools right afterwards.
 
 ```
 curl -O https://bootstrap.pypa.io/get-pip.py
@@ -212,6 +212,8 @@ You will then be able to generate the Genesis block by running:
 ```
 python mk_genesis_block.py --extradata 0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa > genesis_block.json
 ```
+
+The block will start going through and processing the transactions. These are the transactions that took place in the Ether pre-sale during 2014. How cool is that? 
 
 Once you are satisfied with the generation of the Genesis block, you can load it into the clients using this command:
 
@@ -315,7 +317,7 @@ _Note: If you lose your keys, you lose access to the account and its ether balan
       geth --rpc console
       ```
 
-* In another window terminal (right click on the window terminal and select "_Duplicate session_"), start **ethminer**: 
+* In another window terminal (right click on the window terminal and select "_Duplicate session_", if you are using PuTTY for WIndows, if you are using MAC [xxxxx]), start **ethminer**: 
       ```
       ethminer -G --opencl-device 0
       ```
