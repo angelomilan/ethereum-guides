@@ -217,7 +217,7 @@ You will then be able to generate the Genesis block by running:
 python mk_genesis_block.py --extradata 0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa > genesis_block.json
 ```
 
-The block will start fetching, processing and validating the transactions. These are the transactions that took place in the Ether pre-sale during 2014. How cool is that? 
+The block will start fetching, processing, validating and timestamping the transactions. These are the transactions that took place in the Ether pre-sale during 2014. How cool is that? 
 
 ###Step 3 - Use geth to download the blockchain
 
