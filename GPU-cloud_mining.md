@@ -1,7 +1,6 @@
 # ETHEREUM CLOUD MINING FOR DUMMIES
 
-***_For Mac, Windows, and Linux users._***
-
++***_For Mac, Windows, and Linux users._***
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
 ** Warning: this has been tested on the Frontier test-net and has just recently undergone testing on the Frontier live-net, which has just been launched. A notice on costs: you are going to spend about 2.60 USD / hour for a g2.8 instance so keep this in mind, if you want to proceed **
@@ -316,7 +315,7 @@ geth console
 geth --rpc console
 ```
 
-* In another window terminal (right click on the window terminal and select "_Duplicate session_", if you are using PuTTY for WIndows, if you are using MAC [xxxxx]), start **ethminer**: 
+* In another window terminal (right click on the window terminal and select "_Duplicate session_", if you are using PuTTY for WIndows, if you are using MAC first click inside the Terminal Window, go up to the tool bar > Shell > New Window > New window with settings basic. Then copy and paste the ssh command at the beginning of this guide. Repeat this 4 times. , to start **ethminer**: 
 ```
 ethminer -G --opencl-device 0
 ```
