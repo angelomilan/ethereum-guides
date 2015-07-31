@@ -394,7 +394,7 @@ re-generate the DAG
 (everything is stuck and you can't connect to your instance)
 
 **one core of the gpu says: bus error**
-
+just re-initiate the core with the command above
 
 
 
