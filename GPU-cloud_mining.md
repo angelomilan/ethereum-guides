@@ -338,6 +338,8 @@ _Note, if you encounter any issue or bug on this part 2 of the guide, please see
 
 ## Q&A
 
+**Q**: I mined some ETH. Now, I want to stop / terminate the instance. What should I do to keep my ETH safe? 
+
 **Q**: Ethereum blockchain sync: how long does it take to download the full blockchain?  
 **A**: You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
 
@@ -374,6 +376,31 @@ Once you are done with your mining you have two choices:
   * Click Yes, Terminate when prompted for confirmation.
 
 **_Thanks to paul_bxd of the Ethereum forum who initiated us to cloud mining with Ethereum and AWS EC2. Without his help and resources we would not be able to put this guide together._**
+
+
+## Troubleshooting
+
+
+=======
+
+Errors
+
+**JSON-RPC error**
+
+re-generate the DAG
+
+**Failed: broken pipe/ connection timeout**
+
+(everything is stuck and you can't connect to your instance)
+
+**one core of the gpu says: bus error**
+
+
+
+
+
+
+
 
 ## Special announcement
 
