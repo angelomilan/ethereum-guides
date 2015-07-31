@@ -1,5 +1,6 @@
 # ETHEREUM CLOUD MINING FOR DUMMIES
 
+***_For Mac, Windows, and Linux users._***
 
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
