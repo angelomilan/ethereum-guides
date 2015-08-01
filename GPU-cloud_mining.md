@@ -392,6 +392,8 @@ re-generate the DAG
 **Failed: broken pipe/ connection timeout**
 
 (everything is stuck and you can't connect to your instance)
+this can happen when you have a dynamic ip with your internet connection. Update the "my ip"
+solution here: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html
 
 **one core of the gpu says: bus error**
 just re-initiate the core with the command above
