@@ -14,8 +14,13 @@ Resources:
 * http://santtu.iki.fi/2014/03/19/ec2-spot-usage/
 * http://santtu.iki.fi/2014/03/12/ec2-spot-instances/
 
+Is this option useful for us?:
+""" 
+A persistent Spot Instance request remains active until it expires or you cancel it, even if the request is fulfilled. For example, if you create a persistent Spot Instance request for one instance when the Spot Price is $0.25, the Spot service launches your Spot Instance if your bid price is above $0.25. If the Spot Price rises above your bid price, your Spot Instance is terminated; however, the Spot Instance request is open again and the Spot service launches a new Spot Instance when the Spot Price falls below your bid price.
 
+You can track the status of your Spot Instance requests, as well as the status of the Spot Instances launched, through the bid status. For more information, see Spot Bid Status.
 
+"""
 
 To deal with non-persistency of spot instances, run a regular instance, 
 1. install all you need to get ethereum mining up and running
