@@ -1,6 +1,6 @@
 # ETHEREUM CLOUD MINING FOR DUMMIES
 
-+***_For Mac, Windows, and Linux users._***
++***_For Mac, Windows, and Linux users._***  
 _by A.Milan (github.com/angelomilan) and M.Terzi (github.com/terzim) with the precious support of @paul_bxd and @jesus666_
 
 ** Warning: this has been tested on the Frontier test-net and has just recently undergone testing on the Frontier live-net, which has just been launched. A notice on costs: you are going to spend about 2.60 USD / hour for a g2.8 instance so keep this in mind, if you want to proceed **
@@ -309,9 +309,12 @@ geth console
 
 ### Step 6 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
 
-* Start again **geth with RPC (remote procedure call) enabled**: 
+We're going to want both the RPC client (written in Go) and the Miner (written in C++) to run simultaneously. We also want them to run in the background so that in case we drop our SSH connection, but the RPC and Miner keep running. To do that, we're going to use a tool called `screen`.
 
+First lets start the Geth RPC client
+ 
 ```
+screen
 geth --rpc console
 ```
 
