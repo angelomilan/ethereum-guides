@@ -318,10 +318,18 @@ screen
 geth --rpc console
 ```
 
-* In another window terminal (right click on the window terminal and select "_Duplicate session_", if you are using PuTTY for WIndows, if you are using MAC first click inside the Terminal Window, go up to the tool bar > Shell > New Window > New window with settings basic. Then copy and paste the ssh command at the beginning of this guide. Repeat this 4 times. , to start **ethminer**: 
+Then hit `control-A`, then hit `control-D`
+
+Now lets start the miner
+
 ```
+screen
 ethminer -G --opencl-device 0
 ```
+
+Then hit control-A then hit control-D.
+
+Enter `screen -ls` and verify that you have two detached screens running in the background. You can enter back into that screen and check the output by entering `screen -x ID_OF_SCREEN`. You can exit out re-detach from the screen by entering `control-A`, then `control-D`
 
 _Note: if you're using the larger g2 instance with 4 GPUs (the 2.8) you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ 
 
@@ -340,8 +348,6 @@ PICTURE HERE
 _Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
 ## Q&A
-
-**Q**: I mined some ETH. Now, I want to stop / terminate the instance. What should I do to keep my ETH safe? 
 
 **Q**: Ethereum blockchain sync: how long does it take to download the full blockchain?  
 **A**: You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
