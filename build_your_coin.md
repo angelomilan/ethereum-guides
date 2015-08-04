@@ -1,7 +1,15 @@
-# ethereum-guides
-Ethereum guides for dummies
+# Build your coin on top of ethereum (working title)
 
-If you want to contribute, just follow me @angelomilan
-I'll follow you back so we can direct message
+The goal of this guide is to help you creating your token on top of the ethereum network and lightweight client (iPhone App) based on (opensource, pre-made bitcoin wallet client here)
+ in the background iphone app users will run an ethereum node (is this even possible? on android, maybe)
 
-![who wants to learn about ethereum uh](https://github.com/angelomilan/ethereum-guides/blob/master/images/250.gif)
+Augur does that:
+https://youtu.be/Qvexa1pUzUA?t=288
+
+
+Ethereum.org features a short, introductive tutorial at ethereum.org/token 
+But we are going to do a step by step thing, as always
+
+
+
+
