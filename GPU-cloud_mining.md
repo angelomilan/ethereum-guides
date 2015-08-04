@@ -59,7 +59,7 @@ How can we find it? To find a Linux AMI using the Images page:
 * Switch to **Public Images** next to the search filter (the default is _"Owned by Me"_ which will be at first empty, since you do not yet own any AMI)
 * Click on the search filter and then (search by) _AMI ID_ -> **ami-2cbf3e44**
 
-_Note: make always sure you are in the correct region (US East, N.Virginia as we said) otherwise you will not see the AMI we are insterested in on the list._
+_Note: Make always sure you are in the correct region (US East, N.Virginia as we said) otherwise you will not see the AMI we are insterested in on the list._
 
 The **ami-2cbf3e44**, like all the ubuntu 14.04 images, is supported by Ethereum Frontier, but in addition this pre-built AMI has all the NVIDIA GPU drivers, OpenCL, etc... all pre-installed. 
 
@@ -118,7 +118,7 @@ Your instance should be pre-selected. Wait about 5 minutes for the Initializing 
       ssh -i /Applications/Utilities/youraccesskeyname.pem ubuntu@YO.UR.PUBILICIP
       ```
 
-Note: you will need to use this line every time you close Terminal and want to start again
+Note: You will need to use this line every time you close Terminal and want to start again
 
 * Type yes
 * You should get a confirmation message: 
@@ -159,7 +159,7 @@ To connect to your instance on Windows you will have to follow additional steps:
 
 _Note: If you specified a passphrase when you converted your private key to PuTTY's format, you must provide that passphrase when you log in to the instance._ 
 
-_Note 2: if these steps don’t work the first time, quit PuTTY and do it again. Click [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) for troubleshooting_
+_Note 2: If these steps don’t work the first time, quit PuTTY and do it again. Click [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html) for troubleshooting_
 
 ##Part 2 - Installing Ethereum on your instance and start mining
 
@@ -268,9 +268,9 @@ sudo apt-get update
 sudo apt-get install cpp-ethereum 
 ```
 
-**_Note: do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_**
+**_Note: Do not confuse Eth (the Command Line Interface client of C++ Ethereum) and EthMiner (which is the standalone miner). Both come with the installation package but they are two different things_**
 
-_Note 2: if you were just testing this guide with the free micro instance you have now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
+_Note 2: If you were just testing this guide with the free micro instance you have now reached a dead end, in fact you will read this message "modprobe: ERROR: could not insert '**nvidia**': No such device" The system is telling you that the gpu, an nvidia graphic card, is missing. So, start over the guide and get the g2.8xlarge instance before proceeding any further._
 
 * Benchmark ethminer to check that your system is in order: (should give you your current hashrate, roughly 6MH/s)
 
@@ -309,7 +309,7 @@ geth console
 
 ### Step 6 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
 
-We're going to want both the RPC client (written in Go) and the Miner (written in C++) to run simultaneously. We also want them to run in the background so that in case we drop our SSH connection, but the RPC and Miner keep running. To do that, we're going to use a tool called `screen`.
+We're going to want both the RPC client (written in Go) and the Miner (written in C++) to run simultaneously. We also want them to run in the background so that in case we drop our SSH connection, the RPC and Miner keep running. To do that, we're going to use a tool called `screen`.
 
 First lets start the Geth RPC client
  
@@ -331,7 +331,7 @@ Then hit control-A then hit control-D.
 
 Enter `screen -ls` and verify that you have two detached screens running in the background. You can enter back into that screen and check the output by entering `screen -x ID_OF_SCREEN`. You can exit out re-detach from the screen by entering `control-A`, then `control-D`
 
-_Note: if you're using the larger g2 instance with 4 GPUs (the 2.8) you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ 
+_Note: If you're using the larger g2 instance with 4 GPUs (the 2.8) you may need to start ethminer 4 times, each time adding a --opencl-device <0..3> argument_ 
 
 So, you will need to start ethminer 3 more times with these commands:
 ```
@@ -345,7 +345,7 @@ ethminer -G --opencl-device 3
 PICTURE HERE
 
 
-_Note, if you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
+_Note: If you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
 
 ## Q&A
 
@@ -353,7 +353,7 @@ _Note, if you encounter any issue or bug on this part 2 of the guide, please see
 **A**: You have to wait few hours, depending on the instance of your choice (one or 4 cores) and other factors.
 
 **Q**: What if I quit Terminal and turn off my local computer?  
-**Q**: Does I need to leave my computer always on, can I close Terminal?  
+**Q**: Do I need to leave my computer always on, can I close Terminal?  
 **A**: You should know that your new cloud machine is always working and was already "logged in". (Unless you terminate the instance)
 
 Next time you want to connect to your instance with Terminal and check things, you just need to type these lines:
@@ -426,7 +426,7 @@ Now we are offering free space to host a server you buy. We can provide free pow
 
 If you liked this tutorial and:
 * need help
-* want new Ethereum"for dummies" tutorials
+* want new Ethereum "for dummies" tutorials
 * want to contribute with proof reading or for upcoming tutorials
 
 reach us on twitter or on the ethereum official forum @angelomilan, @terzim
