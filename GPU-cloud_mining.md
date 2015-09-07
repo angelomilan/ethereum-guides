@@ -186,45 +186,14 @@ sudo apt-get install ethereum
 
 and type "Y" to install. 
 
-###Step 2 - Generate the Genesis block and load it to the client
 
-Install curl and python. The latter should be already installed but run the command anyway just to be sure. 
 
-```
-sudo apt-get install curl
-sudo apt-get update
-sudo apt-get install python
-sudo apt-get update
-```
-
-Download the python script that generates the Genesis file. It’s called ‘mk_genesis_block.py’ and can be downloaded running:
-
-```
-curl -O https://raw.githubusercontent.com/ethereum/genesis_block_generator/master/mk_genesis_block.py
-```
-
-This will create the file in the same folder where you invoked the command. You now need to install the pybitcointools created by the very own Vitalik Buterin (Ethereum founder). You can obtain this through the python package manager pip, so we’ll install pip first, then the tools right afterwards.
-
-```
-curl -O https://bootstrap.pypa.io/get-pip.py
-sudo python get-pip.py
-sudo pip install bitcoin
-```
-
-You will then be able to generate the Genesis block by running:
-
-```
-python mk_genesis_block.py --extradata 0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa > genesis_block.json
-```
-
-The block will start fetching, processing, validating and timestamping the transactions. These are the transactions that took place in the Ether pre-sale during 2014. How cool is that? 
-
-###Step 3 - Use geth to download the blockchain
+###Step 2 - Use geth to download the blockchain
 
 Once you are satisfied with the generation of the Genesis block, you can load it into the clients using this command:
 
 ```
-geth --genesis /home/ubuntu/genesis_block.json
+geth 
 ```
 This command works exclusively with the ubuntu instance we suggested. You will need to say "y" to the Ethereum agreement. 
 
@@ -248,7 +217,7 @@ Also, you can see what is the current block of the livenet by viewing the [Ether
 
 * Once this process is completed, you can type ctrl+c to **exit geth**
 
-###Step 4 - Install the C++ miner (ethminer)
+###Step 3 - Install the C++ miner (ethminer)
 
 * Install ethminer. Again, following the [cpp-ethereum dev PPAs guide]( https://github.com/ethereum/cpp-ethereum/wiki/Installing-clients#installing-cpp-ethereum-on-ubuntu-1404-64-bit). 
 
@@ -278,7 +247,7 @@ _Note 2: If you were just testing this guide with the free micro instance you ha
 ethminer -G -M 
 ```
 
-###Step 5 - Create a new account on geth
+###Step 4 - Create a new account on geth
 
 So, once **geth** has finished its synchronisation with the blockchain, you have to **generate a new account**. This will be your "wallet", which will store the ether you mine. **_Your wallet will be stored in the hidden folder ~/.ethereum (in the /keystore subfolder). In the same folder you will find the files of the blockchain._**
 
@@ -307,7 +276,7 @@ geth console
 
 * For more information on accounts and user interaction with accounts visit the Go-ethereum Wiki - [Managing Your Accounts](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts)
 
-### Step 6 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
+### Step 5 - Run the syncro between the Go and C++ clients and start mining Ether (finally!)
 
 We're going to want both the RPC client (written in Go) and the Miner (written in C++) to run simultaneously. We also want them to run in the background so that in case we drop our SSH connection, the RPC and Miner keep running. To do that, we're going to use a tool called `screen`.
 
@@ -342,7 +311,7 @@ ethminer -G --opencl-device 3
 
 * **Now you should be able to see ethminer getting work packages from geth and hopefully even "mined a block" logs in geth.**
 
-PICTURE HERE
+
 
 
 _Note: If you encounter any issue or bug on this part 2 of the guide, please see the notes and comments at [Stephan Tual's GPU mining post](http://forum.ethereum.org/discussion/197/mining-faq-live-updates#latest)_
